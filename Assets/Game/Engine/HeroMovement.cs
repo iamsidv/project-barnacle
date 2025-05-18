@@ -1,31 +1,63 @@
-using System;
 using UnityEngine;
 
 namespace Game.Engine
 {
     public class HeroMovement : MonoBehaviour
     {
-        [SerializeField] private float moveSpeed = 20f;
-        [SerializeField] private float turnSpeed = 70f;
+        public float moveSpeed;
+        public float turnSpeed;
+        public float currentAngle;
+        public float angle = 25f;
 
-        [SerializeField] private Transform heroTransform;
-        [SerializeField] private Transform pointerTransform;
+        #region CharacterController
 
-        public Vector3 actual;
+        [SerializeField] private CharacterController controller;
+        [SerializeField] private float jumpHeight = 2.0f;
+        private readonly float _gravity = -9.81f;
+        private Vector3 _velocity;
+        private bool _isGrounded;
 
-        private void Start()
-        {
-            heroTransform = transform;
-            pointerTransform.position = heroTransform.position;
-        }
+        #endregion
 
         private void Update()
         {
-            float horizontalAxis = Input.GetAxisRaw("Horizontal");
-            float verticalAxis = Input.GetAxisRaw("Vertical");
-            Vector3 input = new Vector3(horizontalAxis, 0, verticalAxis);
-            transform.Rotate(new Vector3(0,horizontalAxis,0) * Time.deltaTime * turnSpeed);
-            transform.Translate(Vector3.forward * verticalAxis * Time.deltaTime * moveSpeed);
+            _isGrounded = controller.isGrounded;
+            if (_isGrounded && _velocity.y < 0)
+            {
+                _velocity.y = 0f;
+            }
+
+
+            float horizontalAxis = Input.GetAxis("Horizontal");
+            float verticalAxis = Input.GetAxis("Vertical");
+
+            Vector3 direction = transform.TransformDirection(new Vector3(0, 0, verticalAxis).normalized);
+            //transform.position += direction * Time.deltaTime * moveSpeed;
+
+            HandleRotation(horizontalAxis);
+            HandleJump();
+
+            _velocity.y += _gravity * Time.deltaTime;
+
+            Vector3 finalMove = (direction * moveSpeed) + (_velocity.y * Vector3.up);
+            controller.Move(finalMove * Time.deltaTime);
+        }
+
+        private void HandleJump()
+        {
+            if (Input.GetButtonDown("Jump") && _isGrounded)
+            {
+                _velocity.y = Mathf.Sqrt(jumpHeight * -2.0f * _gravity);
+            }
+        }
+
+        private void HandleRotation(float steerInput)
+        {
+            currentAngle = steerInput * angle;
+
+            Vector3 euler = transform.rotation.eulerAngles;
+            euler += new Vector3(0, currentAngle, 0) * Time.deltaTime * turnSpeed;
+            transform.rotation = Quaternion.Euler(euler);
         }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -17,6 +18,22 @@ namespace Game.Engine
         private Vector3 _normalisedDirection;
 
         [SerializeField] private float minDistance;
+
+        [SerializeField] private bool overTheTopCamera;
+        
+        private void Awake()
+        {
+            if (overTheTopCamera)
+            {
+                offset = new Vector3(0, 22, 0);
+                transform.rotation = Quaternion.Euler(90, 0, 0);
+            }
+            else
+            {
+                transform.rotation = Quaternion.Euler(28.8f, 0, 0);
+            }
+        }
+
 
         private void Update()
         {

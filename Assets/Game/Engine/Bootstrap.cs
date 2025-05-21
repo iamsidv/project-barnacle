@@ -1,16 +1,15 @@
+using System;
+using Game.Profile;
 using UnityEngine;
 
-public class Bootstrap : MonoBehaviour
+namespace Game.Engine
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public class Bootstrap : MonoBehaviour
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        private void Start()
+        {
+            PlayerProfile playerProfile = new PlayerProfile();
+            playerProfile.CreateOrFetchPlayerData();
+        }
     }
 }

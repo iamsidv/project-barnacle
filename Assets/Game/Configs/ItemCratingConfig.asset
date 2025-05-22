@@ -13,15 +13,73 @@ MonoBehaviour:
   m_Name: ItemCratingConfig
   m_EditorClassIdentifier: 
   collectibles:
-  - id: test_1
-    prefab: {fileID: 0}
-  - id: test_2
-    prefab: {fileID: 0}
-  - id: test_3
-    prefab: {fileID: 0}
+  - id: Button
+    prefab: {fileID: 7955713671172063159, guid: 1f49b5543c331b646a19f6e8cdffc8d9, type: 3}
+  - id: Cap
+    prefab: {fileID: 6146812606000454938, guid: 19cb9a0c1e9abd145929f95be656a050, type: 3}
+  - id: JarLid
+    prefab: {fileID: 5643337690280286802, guid: 5c22b1c6fe3a863428e1d6e41c2bfc94, type: 3}
+  - id: Matchbox
+    prefab: {fileID: 6849000664602916002, guid: eb6bf427a266f1c4c9eee4ff58e7c818, type: 3}
+  - id: WineCork
+    prefab: {fileID: 8037830713357767944, guid: c1a0cf0b64cf2684684d5467e9b632fa, type: 3}
+  - id: Wire
+    prefab: {fileID: 3516667044198933078, guid: 74f20c1d5f76dea4e8a41ca7ea8e03af, type: 3}
   craftingRules:
   - collectableItem:
-    - test_1
-    - test_2
-    result: result_1_2
-    prefab: {fileID: 0}
+    - Button
+    - Matchbox
+    result: CommonStool
+    prefab: {fileID: 8465051747067710387, guid: cce68920e33e9ba4b8ca3187c6eb0521, type: 3}
+  - collectableItem:
+    - Button
+    - Wire
+    result: FancyStool
+    prefab: {fileID: 6387945129134711570, guid: 407fe8e1e4e6caa469c622cfd79daf32, type: 3}
+  - collectableItem:
+    - Button
+    - WineCork
+    result: BarStool
+    prefab: {fileID: 2470868581566464115, guid: f1268d7b1937fe148bac0b0db946b2a3, type: 3}
+  - collectableItem:
+    - Button
+    - Wire
+    - Cap
+    result: TableLamp
+    prefab: {fileID: 1059260486940513371, guid: 5592cef13457b5e46b3eaf9c017e377f, type: 3}
+  - collectableItem:
+    - WineCork
+    - Wire
+    result: StandingHanger
+    prefab: {fileID: 6350935837959906512, guid: fd17dafc30ba46e48828bfd9257b8147, type: 3}
+  - collectableItem:
+    - WineCork
+    - JarLid
+    result: CoffeeTable
+    prefab: {fileID: 3249567362643167457, guid: 12b012c8bcfda1c48968b249888c97a9, type: 3}
+  - collectableItem:
+    - WineCork
+    - WineCork
+    - JarLid
+    result: BarTable
+    prefab: {fileID: 4243285821415341316, guid: 8ee7d5f61003b9f428d87ed4383f7502, type: 3}
+  - collectableItem:
+    - JarLid
+    - Wire
+    result: FanceCoffeeTable
+    prefab: {fileID: 7561802931156125116, guid: f85d2e98e0f7a984da9ade2f82817ead, type: 3}
+  - collectableItem:
+    - JarLid
+    - Matchbox
+    result: DinnerTable
+    prefab: {fileID: 3469881330168745289, guid: 68232fa7b6b76ac45bab2fc4f0f0972b, type: 3}
+  - collectableItem:
+    - Cap
+    - Matchbox
+    result: FlowerPot
+    prefab: {fileID: 2496750048408235038, guid: 64934ed13e3797b4bb25a30e8ef66468, type: 3}
+  - collectableItem:
+    - Cap
+    - Wire
+    result: FancyVase
+    prefab: {fileID: 2082812071114506779, guid: c8c0dfab9c1825d41922420b3dd77710, type: 3}

@@ -11188,6 +11188,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HouseBlockout
       objectReference: {fileID: 0}
+    - target: {fileID: 5479132603686732699, guid: 7453466b6862779468392573e8b37c29, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11245,7 +11249,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8462014697067624528, guid: ebba6655ba397b24c832b8d6c010c24f, type: 3}
+    - {fileID: 506670984271150405, guid: ebba6655ba397b24c832b8d6c010c24f, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

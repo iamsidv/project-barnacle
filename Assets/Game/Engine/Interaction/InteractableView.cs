@@ -4,47 +4,65 @@ namespace Game.Engine.Interaction
 {
     public class InteractableView : MonoBehaviour
     {
-        private IPlayerInteractable _interactable;
+        private IPlayerInteractable _interactingObject;
 
-        private bool _isInteractable;
+        [SerializeField] private GameObject view;
+
+        private bool _isActive;
 
         private void Awake()
         {
-            _isInteractable = false;
+            Interactable = false;
         }
 
         public void Bind(IPlayerInteractable interactable)
         {
-            _interactable = interactable;
+            _interactingObject = interactable;
         }
 
         public void ShowHint()
         {
-            _isInteractable = enabled = true;
+            Interactable = true;
         }
 
         public void HideHint()
         {
-            _isInteractable = enabled = false;
+            Interactable = false;
         }
 
         public void ToggleMessage()
         {
-            _isInteractable = !_isInteractable;
+            Interactable = !Interactable;
         }
 
         private void Update()
         {
-            if (!_isInteractable)
+            var direction = Camera.main.transform.position - transform.position;
+            direction.y = 0;
+            view.transform.rotation = Quaternion.LookRotation(-direction.normalized);
+
+            if (!Interactable)
             {
-                enabled = false;
                 return;
             }
 
             if (Input.GetButtonDown("Interact"))
             {
-                _interactable?.OnInteract();
-                _isInteractable = false;
+                _interactingObject?.OnInteract();
+                Interactable = false;
+            }
+        }
+
+        private bool Interactable
+        {
+            get => _isActive;
+            set
+            {
+                _isActive = enabled = value;
+                if (view != null)
+                {
+                    view.SetActive(_isActive);
+                }
             }
         }
     }

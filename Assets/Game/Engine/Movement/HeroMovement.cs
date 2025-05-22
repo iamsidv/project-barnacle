@@ -1,3 +1,4 @@
+using Game.Engine.Interaction;
 using UnityEngine;
 
 namespace Game.Engine.Movement
@@ -50,7 +51,22 @@ namespace Game.Engine.Movement
 
         private void OnTriggerEnter(Collider other)
         {
-            Debug.Log($"TriggerEntered {other.gameObject.name}");
+            Debug.Log($"TriggerEnter {other.gameObject.name}");
+
+            if (other.TryGetComponent(out InteractableView view))
+            {
+                view.ShowHint();
+            }
+        }
+        
+        private void OnTriggerExit(Collider other)
+        {
+            Debug.Log($"TriggerExit {other.gameObject.name}");
+
+            if (other.TryGetComponent(out InteractableView view))
+            {
+                view.HideHint();
+            }
         }
 
         public bool IsGrounded => _isGrounded;

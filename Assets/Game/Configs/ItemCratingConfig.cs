@@ -18,6 +18,7 @@ namespace Game.Configs
     {
         [SerializeField] private string id;
         [SerializeField] private GameObject prefab;
+        [SerializeField] private Sprite icon;
     }
 
     [System.Serializable]
@@ -26,5 +27,11 @@ namespace Game.Configs
         [SerializeField] private List<string> collectableItem;
         [SerializeField] private string result;
         [SerializeField] private GameObject prefab;
+        [SerializeField] private Sprite icon;
+
+        public string ResultId()
+        {
+            return string.Join("~", collectableItem);
+        }
     }
 }

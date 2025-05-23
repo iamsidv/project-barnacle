@@ -15,71 +15,88 @@ MonoBehaviour:
   collectibles:
   - id: Button
     prefab: {fileID: 7955713671172063159, guid: 1f49b5543c331b646a19f6e8cdffc8d9, type: 3}
+    icon: {fileID: 21300000, guid: 952e1dbc03d14ff49a4ad35c94252f51, type: 3}
   - id: Cap
     prefab: {fileID: 6146812606000454938, guid: 19cb9a0c1e9abd145929f95be656a050, type: 3}
+    icon: {fileID: 21300000, guid: 417dceb268bfaba4da1513e6a264616f, type: 3}
   - id: JarLid
     prefab: {fileID: 5643337690280286802, guid: 5c22b1c6fe3a863428e1d6e41c2bfc94, type: 3}
+    icon: {fileID: 21300000, guid: a0a0e1bf11d45204e8d96dedda33f926, type: 3}
   - id: Matchbox
     prefab: {fileID: 6849000664602916002, guid: eb6bf427a266f1c4c9eee4ff58e7c818, type: 3}
+    icon: {fileID: 21300000, guid: 573e8119ad7b9924f90b647f628363c7, type: 3}
   - id: WineCork
     prefab: {fileID: 8037830713357767944, guid: c1a0cf0b64cf2684684d5467e9b632fa, type: 3}
+    icon: {fileID: 21300000, guid: f2c3d62004805ae469f05f2b841bdd1e, type: 3}
   - id: Wire
     prefab: {fileID: 3516667044198933078, guid: 74f20c1d5f76dea4e8a41ca7ea8e03af, type: 3}
+    icon: {fileID: 21300000, guid: c04b3f9afdf4a2b41a6179190aeb13ca, type: 3}
   craftingRules:
   - collectableItem:
     - Button
     - Matchbox
     result: CommonStool
     prefab: {fileID: 8465051747067710387, guid: cce68920e33e9ba4b8ca3187c6eb0521, type: 3}
+    icon: {fileID: 21300000, guid: bccd580e30b7eee458d25edfb4584580, type: 3}
   - collectableItem:
     - Button
     - Wire
     result: FancyStool
     prefab: {fileID: 6387945129134711570, guid: 407fe8e1e4e6caa469c622cfd79daf32, type: 3}
+    icon: {fileID: 21300000, guid: 2f08ddd901bd6ea4b9b98c683a56988c, type: 3}
   - collectableItem:
     - Button
     - WineCork
     result: BarStool
     prefab: {fileID: 2470868581566464115, guid: f1268d7b1937fe148bac0b0db946b2a3, type: 3}
+    icon: {fileID: 21300000, guid: ef10e3ae8fc5a6d43b2088357c012318, type: 3}
   - collectableItem:
     - Button
     - Wire
     - Cap
     result: TableLamp
     prefab: {fileID: 1059260486940513371, guid: 5592cef13457b5e46b3eaf9c017e377f, type: 3}
+    icon: {fileID: 21300000, guid: 3db98c54032164349bac34f57ebaed23, type: 3}
   - collectableItem:
     - WineCork
     - Wire
     result: StandingHanger
     prefab: {fileID: 6350935837959906512, guid: fd17dafc30ba46e48828bfd9257b8147, type: 3}
+    icon: {fileID: 21300000, guid: c6b18e2629384054b818ef0404dc4e87, type: 3}
   - collectableItem:
     - WineCork
     - JarLid
     result: CoffeeTable
     prefab: {fileID: 3249567362643167457, guid: 12b012c8bcfda1c48968b249888c97a9, type: 3}
+    icon: {fileID: 21300000, guid: 05be4566fbc0b214ea6c1d9148842f91, type: 3}
   - collectableItem:
     - WineCork
     - WineCork
     - JarLid
     result: BarTable
     prefab: {fileID: 4243285821415341316, guid: 8ee7d5f61003b9f428d87ed4383f7502, type: 3}
+    icon: {fileID: 21300000, guid: 09af9f37043549f4fba4031129cf9727, type: 3}
   - collectableItem:
     - JarLid
     - Wire
     result: FanceCoffeeTable
     prefab: {fileID: 7561802931156125116, guid: f85d2e98e0f7a984da9ade2f82817ead, type: 3}
+    icon: {fileID: 21300000, guid: 0a168ee04c54fc8498f2fb8f936ece34, type: 3}
   - collectableItem:
     - JarLid
     - Matchbox
     result: DinnerTable
     prefab: {fileID: 3469881330168745289, guid: 68232fa7b6b76ac45bab2fc4f0f0972b, type: 3}
+    icon: {fileID: 21300000, guid: 448abbc50ccc4d24e98b351c97648f0d, type: 3}
   - collectableItem:
     - Cap
     - Matchbox
     result: FlowerPot
     prefab: {fileID: 2496750048408235038, guid: 64934ed13e3797b4bb25a30e8ef66468, type: 3}
+    icon: {fileID: 21300000, guid: c2536d206ece454469f141ffffd6c1a5, type: 3}
   - collectableItem:
     - Cap
     - Wire
     result: FancyVase
     prefab: {fileID: 2082812071114506779, guid: c8c0dfab9c1825d41922420b3dd77710, type: 3}
+    icon: {fileID: 21300000, guid: a6ca81e6e66263c4285e575da6f41248, type: 3}

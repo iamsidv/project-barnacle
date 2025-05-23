@@ -86,6 +86,7 @@ namespace Game.Configs.Editor
                 var ruleProp = craftingRulesProp.GetArrayElementAtIndex(i);
                 var resultProp = ruleProp.FindPropertyRelative("result");
                 var prefabProp = ruleProp.FindPropertyRelative("prefab");
+                var iconProp = ruleProp.FindPropertyRelative("icon");
 
                 EditorGUILayout.BeginVertical("box");
 
@@ -95,6 +96,7 @@ namespace Game.Configs.Editor
                 // Result field
                 EditorGUILayout.PropertyField(resultProp);
                 EditorGUILayout.PropertyField(prefabProp);
+                EditorGUILayout.PropertyField(iconProp);
 
                 if (GUILayout.Button("Remove Rule"))
                 {

@@ -23,8 +23,18 @@ namespace Game.Profile
             {
                 Name = "DefaultUser",
                 Inventory = new Inventory(defaultSlots),
+                Wallet = new Wallet
+                {
+                    Coins = 100
+                }
             };
 
+            userModel.Inventory.AddItem(1, new InventoryItem("Button"));
+            userModel.Inventory.AddItem(2, new InventoryItem("Cap"));
+            userModel.Inventory.AddItem(3, new InventoryItem("MatchBox"));
+            
+            _userModel = userModel;
+            
             Debug.Log(JsonConvert.SerializeObject(userModel));
         }
 
@@ -42,33 +52,76 @@ namespace Game.Profile
 
     public class Inventory
     {
-        public readonly List<Slot> Slots;
-        public readonly int SlotsAvailable;
+        [JsonProperty("slots")] public List<Slot> Slots { get; private set; }
 
-        public Inventory(int defaultSlots)
+        [JsonProperty("active")] public readonly int Available;
+
+        public Inventory(int totalSlots)
         {
-            SlotsAvailable = defaultSlots;
+            Available = totalSlots;
             Slots = new List<Slot>();
+            for (int i = 0; i < totalSlots; i++)
+            {
+                Slots.Add(new Slot(i + 1));
+            }
+        }
+
+        public void AddItem(int slotId, InventoryItem item)
+        {
+            foreach (Slot slot in Slots)
+            {
+                if (slot.Id == slotId && slot.IsAvailable)
+                {
+                    slot.Item = item;
+                    break;
+                }
+            }
         }
     }
 
     public class InventoryItem
     {
-        public int Id;
-        public string LocalisationId;
-        public string LocalisedName;
+        public string Id;
+
+        [JsonProperty("loc_id")] public string LocalisationId;
+        [JsonProperty("loc_name")] public string LocalisedName;
+
+        public InventoryItem(string id)
+        {
+            Id = id;
+        }
     }
 
     public class Slot
     {
-        public int SlotIndex;
+        public int Id;
         public InventoryItem Item;
-        public bool IsAvailable => Item != null;
+        [JsonIgnore] public bool IsAvailable => Item == null;
+
+        public Slot(int id)
+        {
+            Id = id;
+        }
+
+        public void AddItem(InventoryItem item)
+        {
+        }
+
+        public void RemoveItem()
+        {
+            Item = null;
+        }
     }
 
     public class UserModel
     {
-        public string Name;
-        public Inventory Inventory;
+        [JsonProperty("name")] public string Name { get; set; }
+        [JsonProperty("inventory")] public Inventory Inventory { get; set; }
+        [JsonProperty("wallet")] public Wallet Wallet { get; set; }
+    }
+
+    public class Wallet
+    {
+        [JsonProperty("coins")] public int Coins { get; set; }
     }
 }

@@ -114,6 +114,7 @@ namespace Game.Configs.Editor
                 CreateCraftingRuleLists(); // refresh lists
             }
 
+           
             serializedObject.ApplyModifiedProperties();
         }
     }

@@ -1,13 +1,12 @@
 using System.Collections.Generic;
-using Unity.Properties;
+using Game.Engine;
+using Game.Profile;
 using UnityEngine;
 
 namespace Game.UI.Crafting
 {
     public class InventorySection : MonoBehaviour
     {
-        private readonly int _inventorySlots = 6;
-
         [SerializeField] private InventorySlotView slotPrefab;
         [SerializeField] private InventoryItemView inventoryItemPrefab;
         [SerializeField] private Transform inventoryContainer;
@@ -28,21 +27,22 @@ namespace Game.UI.Crafting
 
         private void PopulateInventory()
         {
-            for (int i = 0; i < _inventorySlots; i++)
+            PlayerContext context = GameEngine.Context;
+
+            foreach ((int slotId, Slot slot) in context.Player.Inventory.Slots)
             {
                 InventorySlotView view = Instantiate(slotPrefab, inventoryContainer);
+                view.SetData(slotId.ToString());
                 view.SetVisibility(true);
                 _slotItems.Add(view);
-            }
 
-            for (int i = 0; i < _owner.PlayerInventory.Count; i++)
-            {
-                InventoryItemView item = Instantiate(inventoryItemPrefab, _slotItems[i].transform);
-                item.SetData(_owner.PlayerInventory[i]);
-                item.SetOwner(this);
-                item.SetVisibility(true);
-                item.gameObject.name = _owner.PlayerInventory[i];
-                // tt.transform.position = _slotItems[i].transform.position;
+                if (slot.Item != null)
+                {
+                    InventoryItemView item = Instantiate(inventoryItemPrefab, view.transform);
+                    item.SetData(context, slot.Item.Id);
+                    item.SetOwner(this);
+                    item.SetVisibility(true);
+                }
             }
         }
 
@@ -58,8 +58,6 @@ namespace Game.UI.Crafting
 
         public bool CheckOverlaps(InventoryItemView view, Vector2 eventDataPosition, out CraftItemIndicator indicator)
         {
-            //RectTransformUtility.RectangleContainsScreenPoint(_owner.CraftingSection.)
-            
             return _owner.CraftingSection.CheckOverlap(eventDataPosition, out indicator);
         }
     }

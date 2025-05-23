@@ -11,11 +11,6 @@ namespace Game.UI.Crafting
 
         [SerializeField] private Button btnContinue;
         [SerializeField] private Button btnClear;
-        
-        internal readonly List<string> PlayerInventory = new()
-        {
-            "Cat", "Dog", "Button"
-        };
 
         public CraftItemsSection CraftingSection => craftingSection;
         

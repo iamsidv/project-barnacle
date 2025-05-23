@@ -1,4 +1,6 @@
 using System;
+using Game.Configs;
+using Game.Engine;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -9,7 +11,7 @@ namespace Game.UI.Crafting
     {
         private Vector3 _startPosition;
         private InventorySection _owner;
-        private string id;
+        private string _id;
         [SerializeField] private Image image;
         
         [SerializeField] private Transform _parentTransform;
@@ -24,9 +26,16 @@ namespace Game.UI.Crafting
             _owner = inventorySection;
         }
 
-        public void SetData(string s)
+        public void SetData(PlayerContext context, string id)
         {
-            id = s;
+            _id = id;
+            gameObject.name = id;
+           
+            CollectibleItem item  = context.Config.CraftConfig.Collectibles.Find(item => item.Id.Equals(id));
+            if (item != null)
+            {
+                image.sprite = item.Icon;
+            }
         }
 
         public void SetVisibility(bool visible)
@@ -56,7 +65,7 @@ namespace Game.UI.Crafting
 
             if (result)
             {
-                itemIndicator.SetData(id, null);
+                itemIndicator.SetData(_id, null);
                 transform.SetParent(itemIndicator.transform);
                 transform.localPosition = Vector3.zero;
                 _parentTransform = itemIndicator.transform;

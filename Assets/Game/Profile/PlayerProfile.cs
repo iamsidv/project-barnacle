@@ -8,6 +8,13 @@ namespace Game.Profile
     {
         private UserModel _userModel;
 
+        public Inventory Inventory => _userModel.Inventory;
+
+        public PlayerProfile()
+        {
+            CreateOrFetchPlayerData();
+        }
+
         public void CreateOrFetchPlayerData()
         {
             if (IsNewUser())
@@ -29,52 +36,41 @@ namespace Game.Profile
                 }
             };
 
-            userModel.Inventory.AddItem(1, new InventoryItem("Button"));
-            userModel.Inventory.AddItem(2, new InventoryItem("Cap"));
-            userModel.Inventory.AddItem(3, new InventoryItem("MatchBox"));
-            
             _userModel = userModel;
-            
-            Debug.Log(JsonConvert.SerializeObject(userModel));
+
+            PrintState();
         }
 
         private bool IsNewUser()
         {
             return !PlayerPrefs.HasKey("user_profile_data");
         }
+
+        public void PrintState()
+        {
+            Debug.Log(JsonConvert.SerializeObject(_userModel));
+        }
     }
 
     public class BaseSingleton<T> where T : class, new()
     {
-        private static T instance;
-        public static T Instance => instance ?? new T();
+        private static T _instance;
+        public static T Instance => _instance ?? new T();
     }
 
     public class Inventory
     {
-        [JsonProperty("slots")] public List<Slot> Slots { get; private set; }
+        [JsonProperty("slots")] public Dictionary<int, Slot> Slots { get; private set; }
 
         [JsonProperty("active")] public readonly int Available;
 
         public Inventory(int totalSlots)
         {
             Available = totalSlots;
-            Slots = new List<Slot>();
+            Slots = new();
             for (int i = 0; i < totalSlots; i++)
             {
-                Slots.Add(new Slot(i + 1));
-            }
-        }
-
-        public void AddItem(int slotId, InventoryItem item)
-        {
-            foreach (Slot slot in Slots)
-            {
-                if (slot.Id == slotId && slot.IsAvailable)
-                {
-                    slot.Item = item;
-                    break;
-                }
+                Slots.Add(i + 1, new Slot(i + 1));
             }
         }
     }
@@ -88,7 +84,7 @@ namespace Game.Profile
 
         public InventoryItem(string id)
         {
-            Id = id;
+            Id = id.ToLower();
         }
     }
 

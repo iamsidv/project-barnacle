@@ -4,13 +4,13 @@ namespace Game.UI.Crafting
 {
     public class CraftItemsSection : MonoBehaviour
     {
-        [SerializeField] private CraftItemIndicator item1;
-        [SerializeField] private CraftItemIndicator item2;
+        [SerializeField] private CraftItemSlot item1;
+        [SerializeField] private CraftItemSlot item2;
         [SerializeField] private CraftItemResult result;
 
         private CraftItemsView _owner;
 
-        public bool CheckOverlap(Vector2 endPosition, out CraftItemIndicator indicator)
+        public bool CheckOverlap(Vector2 endPosition, out ItemSlot slot)
         {
             bool a = RectTransformUtility.RectangleContainsScreenPoint(item1.RectTransform, endPosition);
             bool b = RectTransformUtility.RectangleContainsScreenPoint(item2.RectTransform, endPosition);
@@ -18,17 +18,17 @@ namespace Game.UI.Crafting
             Debug.Log($"_debug_ a : {a}, b : {b}");
             if (a && !item1.HasElement())
             {
-                indicator = item1;
+                slot = item1;
                 return true;
             }
 
             if (b && !item2.HasElement())
             {
-                indicator = item2;
+                slot = item2;
                 return true;
             }
 
-            indicator = null;
+            slot = null;
             return false;
         }
 

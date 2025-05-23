@@ -8,6 +8,13 @@ namespace Game.Profile
     {
         private UserModel _userModel;
 
+        public Inventory Inventory => _userModel.Inventory;
+
+        public PlayerProfile()
+        {
+            CreateOrFetchPlayerData();
+        }
+
         public void CreateOrFetchPlayerData()
         {
             if (IsNewUser())
@@ -23,52 +30,97 @@ namespace Game.Profile
             {
                 Name = "DefaultUser",
                 Inventory = new Inventory(defaultSlots),
+                Wallet = new Wallet
+                {
+                    Coins = 100
+                }
             };
 
-            Debug.Log(JsonConvert.SerializeObject(userModel));
+            _userModel = userModel;
+
+            PrintState();
         }
 
         private bool IsNewUser()
         {
             return !PlayerPrefs.HasKey("user_profile_data");
         }
+
+        public void PrintState()
+        {
+            Debug.Log(JsonConvert.SerializeObject(_userModel));
+        }
     }
 
     public class BaseSingleton<T> where T : class, new()
     {
-        private static T instance;
-        public static T Instance => instance ?? new T();
+        private static T _instance;
+        public static T Instance => _instance ?? new T();
     }
 
     public class Inventory
     {
-        public readonly List<Slot> Slots;
-        public readonly int SlotsAvailable;
+        [JsonProperty("slots")] public Dictionary<int, Slot> Slots { get; private set; }
 
-        public Inventory(int defaultSlots)
+        [JsonProperty("active")] public readonly int Available;
+
+        public Inventory(int totalSlots)
         {
-            SlotsAvailable = defaultSlots;
-            Slots = new List<Slot>();
+            Available = totalSlots;
+            Slots = new Dictionary<int, Slot>();
+            for (int i = 0; i < totalSlots; i++)
+            {
+                Slots.Add(i + 1, new Slot(i + 1));
+            }
         }
     }
 
     public class InventoryItem
     {
-        public int Id;
-        public string LocalisationId;
-        public string LocalisedName;
+        public string Id;
+
+        [JsonProperty("loc_id")] public string LocalisationId;
+        [JsonProperty("loc_name")] public string LocalisedName;
+
+        public InventoryItem(string id)
+        {
+            Id = id.ToLower();
+        }
     }
 
     public class Slot
     {
-        public int SlotIndex;
-        public InventoryItem Item;
-        public bool IsAvailable => Item != null;
+        public int Id { get; private set; }
+        public InventoryItem Item { get; private set; }
+        
+        [JsonIgnore] public bool IsEmpty => Item == null;
+
+        public Slot(int id)
+        {
+            Id = id;
+        }
+
+        public Slot AddItem(InventoryItem item)
+        {
+            Item = item;
+            return this;
+        }
+
+        public void RemoveItem()
+        {
+            Item = null;
+        }
     }
 
     public class UserModel
     {
-        public string Name;
-        public Inventory Inventory;
+        [JsonProperty("name")] public string Name { get; set; }
+        [JsonProperty("inventory")] public Inventory Inventory { get; set; }
+        [JsonProperty("wallet")] public Wallet Wallet { get; set; }
+    }
+
+    public class Wallet
+    {
+        [JsonProperty("coins")] public int Coins { get; set; }
     }
 }

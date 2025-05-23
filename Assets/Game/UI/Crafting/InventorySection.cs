@@ -1,19 +1,18 @@
 using System.Collections.Generic;
-using Unity.Properties;
+using Game.Engine;
+using Game.Profile;
 using UnityEngine;
 
 namespace Game.UI.Crafting
 {
     public class InventorySection : MonoBehaviour
     {
-        private readonly int _inventorySlots = 6;
-
-        [SerializeField] private InventorySlotView slotPrefab;
+        [SerializeField] private InventorySlot slotPrefab;
         [SerializeField] private InventoryItemView inventoryItemPrefab;
         [SerializeField] private Transform inventoryContainer;
 
         private CraftItemsView _owner;
-        private readonly List<InventorySlotView> _slotItems = new();
+        private readonly List<InventorySlot> _slotItems = new();
 
         public void Init(CraftItemsView owner)
         {
@@ -28,27 +27,40 @@ namespace Game.UI.Crafting
 
         private void PopulateInventory()
         {
-            for (int i = 0; i < _inventorySlots; i++)
+            PlayerContext context = GameEngine.Context;
+
+            Dictionary<int, Slot> Slots = new()
             {
-                InventorySlotView view = Instantiate(slotPrefab, inventoryContainer);
+                { 1, new Slot(1).AddItem(new InventoryItem("button")) },
+                { 2, new Slot(2).AddItem(new InventoryItem("cap")) },
+                { 3, new Slot(3).AddItem(new InventoryItem("matchbox")) },
+                { 4, new Slot(4) },
+                { 5, new Slot(5) },
+                { 6, new Slot(6) },
+                { 7, new Slot(7) },
+                { 8, new Slot(8) }
+            };
+
+            foreach ((int slotId, Slot slot) in /*context.Player.Inventory.*/Slots)
+            {
+                InventorySlot view = Instantiate(slotPrefab, inventoryContainer);
+                view.SetData(slotId.ToString());
                 view.SetVisibility(true);
                 _slotItems.Add(view);
-            }
 
-            for (int i = 0; i < _owner.PlayerInventory.Count; i++)
-            {
-                InventoryItemView item = Instantiate(inventoryItemPrefab, _slotItems[i].transform);
-                item.SetData(_owner.PlayerInventory[i]);
-                item.SetOwner(this);
-                item.SetVisibility(true);
-                item.gameObject.name = _owner.PlayerInventory[i];
-                // tt.transform.position = _slotItems[i].transform.position;
+                if (slot.Item != null)
+                {
+                    InventoryItemView item = Instantiate(inventoryItemPrefab, view.transform);
+                    item.SetData(context, slot.Item.Id);
+                    item.SetOwner(this, view);
+                    item.SetVisibility(true);
+                }
             }
         }
 
         private void Clear()
         {
-            foreach (InventorySlotView item in _slotItems)
+            foreach (InventorySlot item in _slotItems)
             {
                 item.Dispose();
             }
@@ -56,11 +68,9 @@ namespace Game.UI.Crafting
             _slotItems.Clear();
         }
 
-        public bool CheckOverlaps(InventoryItemView view, Vector2 eventDataPosition, out CraftItemIndicator indicator)
+        public bool CheckOverlaps(InventoryItemView view, Vector2 eventDataPosition, out ItemSlot slot)
         {
-            //RectTransformUtility.RectangleContainsScreenPoint(_owner.CraftingSection.)
-            
-            return _owner.CraftingSection.CheckOverlap(eventDataPosition, out indicator);
+            return _owner.CraftingSection.CheckOverlap(eventDataPosition, out slot);
         }
     }
 }

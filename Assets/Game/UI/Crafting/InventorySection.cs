@@ -14,6 +14,18 @@ namespace Game.UI.Crafting
         private CraftItemsView _craftItemsView;
         private readonly List<InventorySlot> _slotItems = new();
 
+        public Dictionary<int, Slot> Slots = new()
+        {
+            { 1, new Slot(1).AddItem(new InventoryItem("button")) },
+            { 2, new Slot(2).AddItem(new InventoryItem("cap")) },
+            { 3, new Slot(3).AddItem(new InventoryItem("matchbox")) },
+            { 4, new Slot(4) },
+            { 5, new Slot(5) },
+            { 6, new Slot(6) },
+            { 7, new Slot(7) },
+            { 8, new Slot(8) }
+        };
+        
         public void Init(CraftItemsView owner)
         {
             _craftItemsView = owner;
@@ -28,18 +40,6 @@ namespace Game.UI.Crafting
         private void PopulateInventory()
         {
             PlayerContext context = GameEngine.Context;
-
-            Dictionary<int, Slot> Slots = new()
-            {
-                { 1, new Slot(1).AddItem(new InventoryItem("button")) },
-                { 2, new Slot(2).AddItem(new InventoryItem("cap")) },
-                { 3, new Slot(3).AddItem(new InventoryItem("matchbox")) },
-                { 4, new Slot(4) },
-                { 5, new Slot(5) },
-                { 6, new Slot(6) },
-                { 7, new Slot(7) },
-                { 8, new Slot(8) }
-            };
 
             foreach ((int slotId, Slot slot) in /*context.Player.Inventory.*/Slots)
             {
@@ -57,7 +57,7 @@ namespace Game.UI.Crafting
                 if (slot.Item != null)
                 {
                     InventoryItemView item = Instantiate(inventoryItemPrefab, view.transform);
-                    item.SetData(context, slot.Item.Id);
+                    item.SetData(context, slot.Item.Id, slotId);
                     item.SetOwner(this, view);
                     item.SetVisibility(true);
                     view.SetSlot(item);

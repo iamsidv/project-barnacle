@@ -12,6 +12,7 @@ namespace Game.UI.Crafting
         [SerializeField] private Button btnClear;
 
         public CraftingSection CraftingSection => craftingSection;
+        public InventorySection InventorySection => inventorySection;
         
         private void Start()
         {
@@ -20,7 +21,7 @@ namespace Game.UI.Crafting
 
         public override void OnScreenEnter()
         {
-            btnContinue.onClick.AddListener(CraftNewItems);
+            btnContinue.onClick.AddListener(CraftMaterials);
             btnClear.onClick.AddListener(ClearCraftingOptions);
             
             craftingSection.Init(this);
@@ -36,8 +37,9 @@ namespace Game.UI.Crafting
             inventorySection.ResetSlot();
         }
 
-        private void CraftNewItems()
+        private void CraftMaterials()
         {
+            craftingSection.CraftItem();
         }
     }
 }

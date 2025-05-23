@@ -8,13 +8,12 @@ namespace Game.UI.Crafting
 {
     public class InventoryItemView : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDownHandler
     {
-        private Vector3 _startPosition;
-        private InventorySection _inventorySection;
-        public string InventoryItemId { get; private set; }
         [SerializeField] private Image image;
         
-        //[SerializeField] private Transform _parentTransform;
-
+        private Vector3 _startPosition;
+        private InventorySection _inventorySection;
+        public string ItemId { get; private set; }
+        public int UserSlotId { get; private set; }
         public ItemSlot currentSlot;
         
         private void Start()
@@ -28,12 +27,13 @@ namespace Game.UI.Crafting
             currentSlot = slot;
         }
 
-        public void SetData(PlayerContext context, string inventoryItemId)
+        public void SetData(PlayerContext context, string itemId, int slotId)
         {
-            InventoryItemId = inventoryItemId;
-            gameObject.name = inventoryItemId;
+            ItemId = itemId;
+            gameObject.name = itemId;
+            UserSlotId = slotId;
            
-            CollectibleItem item  = context.Config.CraftConfig.Collectibles.Find(item => item.Id.Equals(inventoryItemId));
+            CollectibleItem item  = context.Config.CraftConfig.Collectibles.Find(item => item.Id.Equals(itemId));
             if (item != null)
             {
                 image.sprite = item.Icon;

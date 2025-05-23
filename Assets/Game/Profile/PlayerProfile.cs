@@ -7,7 +7,7 @@ namespace Game.Profile
     public class PlayerProfile
     {
         private UserModel _userModel;
-    
+
         public void CreateOrFetchPlayerData()
         {
             if (IsNewUser())
@@ -18,13 +18,13 @@ namespace Game.Profile
 
         private void CreateUserProfile()
         {
-            int defaultSlots = 10;
-            UserModel userModel =  new UserModel
+            int defaultSlots = 8;
+            UserModel userModel = new UserModel
             {
                 Name = "DefaultUser",
                 Inventory = new Inventory(defaultSlots),
             };
-            
+
             Debug.Log(JsonConvert.SerializeObject(userModel));
         }
 
@@ -34,7 +34,7 @@ namespace Game.Profile
         }
     }
 
-    public class BaseSingleton<T> where T: class, new()
+    public class BaseSingleton<T> where T : class, new()
     {
         private static T instance;
         public static T Instance => instance ?? new T();

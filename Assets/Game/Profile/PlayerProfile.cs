@@ -67,7 +67,7 @@ namespace Game.Profile
         public Inventory(int totalSlots)
         {
             Available = totalSlots;
-            Slots = new();
+            Slots = new Dictionary<int, Slot>();
             for (int i = 0; i < totalSlots; i++)
             {
                 Slots.Add(i + 1, new Slot(i + 1));
@@ -90,17 +90,20 @@ namespace Game.Profile
 
     public class Slot
     {
-        public int Id;
-        public InventoryItem Item;
-        [JsonIgnore] public bool IsAvailable => Item == null;
+        public int Id { get; private set; }
+        public InventoryItem Item { get; private set; }
+        
+        [JsonIgnore] public bool IsEmpty => Item == null;
 
         public Slot(int id)
         {
             Id = id;
         }
 
-        public void AddItem(InventoryItem item)
+        public Slot AddItem(InventoryItem item)
         {
+            Item = item;
+            return this;
         }
 
         public void RemoveItem()

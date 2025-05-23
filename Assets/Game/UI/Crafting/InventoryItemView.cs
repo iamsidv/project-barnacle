@@ -1,4 +1,3 @@
-using System;
 using Game.Configs;
 using Game.Engine;
 using UnityEngine;
@@ -14,16 +13,19 @@ namespace Game.UI.Crafting
         private string _id;
         [SerializeField] private Image image;
         
-        [SerializeField] private Transform _parentTransform;
+        //[SerializeField] private Transform _parentTransform;
 
+        public ItemSlot currentSlot;
+        
         private void Start()
         {
             _startPosition = transform.localPosition;
         }
 
-        public void SetOwner(InventorySection inventorySection)
+        public void SetOwner(InventorySection inventorySection, ItemSlot slot)
         {
             _owner = inventorySection;
+            currentSlot = slot;
         }
 
         public void SetData(PlayerContext context, string id)
@@ -45,34 +47,35 @@ namespace Game.UI.Crafting
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            _parentTransform = transform.parent;
+            // _parentTransform = transform.parent;
             transform.SetParent(_owner.transform.parent);
             transform.SetAsLastSibling();
         }
         
         public void OnDrag(PointerEventData eventData)
         {
-            Debug.Log($"OnDrag {gameObject.name}");
+            // Debug.Log($"OnDrag {gameObject.name}");
             transform.position = eventData.position;
         }
 
         public void OnEndDrag(PointerEventData eventData)
         {
-            Debug.Log($"OnEndDrag {gameObject.name} {eventData.position} {eventData.pointerCurrentRaycast}");
+            // Debug.Log($"OnEndDrag {gameObject.name} {eventData.position} {eventData.pointerCurrentRaycast}");
             transform.localPosition = _startPosition;
 
-            bool result = _owner.CheckOverlaps(this, eventData.position, out var itemIndicator);
+            bool result = _owner.CheckOverlaps(this, eventData.position, out ItemSlot itemSlot);
 
             if (result)
             {
-                itemIndicator.SetData(_id, null);
-                transform.SetParent(itemIndicator.transform);
+                currentSlot.ReleaseSlot();
+                currentSlot = itemSlot;
+                itemSlot.OccupySlot(this);
+                transform.SetParent(currentSlot.transform);
                 transform.localPosition = Vector3.zero;
-                _parentTransform = itemIndicator.transform;
             }
             else
             {
-                transform.SetParent(_parentTransform);
+                transform.SetParent(currentSlot.transform);
                 transform.localPosition = _startPosition;
             }
         }

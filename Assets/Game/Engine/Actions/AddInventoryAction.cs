@@ -26,12 +26,12 @@ namespace Game.Engine.Actions
                 return ActionResult.InvalidState;
             }
 
-            if (!slot.IsAvailable)
+            if (!slot.IsEmpty)
             {
                 return ActionResult.Failure;
             }
 
-            slot.Item = Item;
+            slot.AddItem(Item);
             
             return ActionResult.Success;
         }

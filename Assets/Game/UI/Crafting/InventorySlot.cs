@@ -3,11 +3,9 @@ using UnityEngine.UI;
 
 namespace Game.UI.Crafting
 {
-    public class InventorySlotView : MonoBehaviour
+    public class InventorySlot : ItemSlot
     {
         [SerializeField] private Image bg;
-
-        [SerializeField] private InventoryItemView inventoryItem;
         private string _id;
 
         public void SetData(string s)

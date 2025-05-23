@@ -11,12 +11,12 @@ namespace Game.UI.Crafting
         [SerializeField] private InventoryItemView inventoryItemPrefab;
         [SerializeField] private Transform inventoryContainer;
 
-        private CraftItemsView _owner;
+        private CraftItemsView _craftItemsView;
         private readonly List<InventorySlot> _slotItems = new();
 
         public void Init(CraftItemsView owner)
         {
-            _owner = owner;
+            _craftItemsView = owner;
         }
 
         public void Refresh()
@@ -77,7 +77,7 @@ namespace Game.UI.Crafting
 
         public bool CheckOverlaps(InventoryItemView view, Vector2 eventDataPosition, out ItemSlot slot)
         {
-            return _owner.CraftingSection.CheckOverlap(eventDataPosition, out slot);
+            return _craftItemsView.CraftingSection.CheckOverlap(eventDataPosition, out slot);
         }
 
         public void ResetSlot()

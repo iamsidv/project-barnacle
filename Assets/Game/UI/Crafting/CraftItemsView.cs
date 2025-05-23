@@ -32,7 +32,7 @@ namespace Game.UI.Crafting
 
         private void ClearCraftingOptions()
         {
-            craftingSection.ResetSlot();
+            craftingSection.ResetSlots();
             inventorySection.ResetSlot();
         }
 

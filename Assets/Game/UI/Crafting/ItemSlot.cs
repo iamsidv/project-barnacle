@@ -11,6 +11,7 @@ namespace Game.UI.Crafting
         
         public RectTransform RectTransform => rectTransform;
         public int SlotId => slotId;
+        public string InventoryItemId => inventoryItem.InventoryItemId;
         
         public void SetData(int id)
         {

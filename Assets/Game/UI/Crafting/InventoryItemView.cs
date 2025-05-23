@@ -9,8 +9,8 @@ namespace Game.UI.Crafting
     public class InventoryItemView : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDownHandler
     {
         private Vector3 _startPosition;
-        private InventorySection _owner;
-        private string _id;
+        private InventorySection _inventorySection;
+        public string InventoryItemId { get; private set; }
         [SerializeField] private Image image;
         
         //[SerializeField] private Transform _parentTransform;
@@ -24,16 +24,16 @@ namespace Game.UI.Crafting
 
         public void SetOwner(InventorySection inventorySection, ItemSlot slot)
         {
-            _owner = inventorySection;
+            _inventorySection = inventorySection;
             currentSlot = slot;
         }
 
-        public void SetData(PlayerContext context, string id)
+        public void SetData(PlayerContext context, string inventoryItemId)
         {
-            _id = id;
-            gameObject.name = id;
+            InventoryItemId = inventoryItemId;
+            gameObject.name = inventoryItemId;
            
-            CollectibleItem item  = context.Config.CraftConfig.Collectibles.Find(item => item.Id.Equals(id));
+            CollectibleItem item  = context.Config.CraftConfig.Collectibles.Find(item => item.Id.Equals(inventoryItemId));
             if (item != null)
             {
                 image.sprite = item.Icon;
@@ -48,7 +48,7 @@ namespace Game.UI.Crafting
         public void OnPointerDown(PointerEventData eventData)
         {
             // _parentTransform = transform.parent;
-            transform.SetParent(_owner.transform.parent);
+            transform.SetParent(_inventorySection.transform.parent);
             transform.SetAsLastSibling();
         }
         
@@ -63,9 +63,9 @@ namespace Game.UI.Crafting
             // Debug.Log($"OnEndDrag {gameObject.name} {eventData.position} {eventData.pointerCurrentRaycast}");
             transform.localPosition = _startPosition;
 
-            bool result = _owner.CheckOverlaps(this, eventData.position, out ItemSlot itemSlot);
+            bool success = _inventorySection.CheckOverlaps(this, eventData.position, out ItemSlot itemSlot);
 
-            if (result)
+            if (success)
             {
                 currentSlot.ReleaseSlot();
                 currentSlot = itemSlot;

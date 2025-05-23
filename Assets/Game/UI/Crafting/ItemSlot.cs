@@ -7,9 +7,16 @@ namespace Game.UI.Crafting
         [SerializeField] private int slotId;
         [SerializeField] private RectTransform rectTransform;
         [SerializeField] protected bool occupied;
-        [SerializeField] private InventoryItemView inventoryItem;
+        [SerializeField] protected InventoryItemView inventoryItem;
         
         public RectTransform RectTransform => rectTransform;
+        public int SlotId => slotId;
+        public string InventoryItemId => inventoryItem.InventoryItemId;
+        
+        public void SetData(int id)
+        {
+            slotId = id;
+        }
         
         public bool HasElement()
         {
@@ -20,12 +27,27 @@ namespace Game.UI.Crafting
         {
             inventoryItem = item;
             occupied = true;
+            OnSlotOccupied();
         }
 
-        public void ReleaseSlot()
+        public virtual void ReleaseSlot()
         {
             inventoryItem = null;
             occupied = false;
+        }
+
+        protected virtual void OnSlotOccupied()
+        {
+        }
+        
+        public void ResetSlot()
+        {
+            if (inventoryItem != null)
+            {
+                Destroy(inventoryItem.gameObject);
+            }
+            
+            ReleaseSlot();
         }
     }
 }

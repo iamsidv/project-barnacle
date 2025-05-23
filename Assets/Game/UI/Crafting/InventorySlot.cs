@@ -8,18 +8,15 @@ namespace Game.UI.Crafting
         [SerializeField] private Image bg;
         private string _id;
 
-        public void SetData(string s)
-        {
-            _id = s;
-        }
-
         public void Dispose()
         {
             Destroy(this.gameObject);
         }
 
-        public void SetSprite(Sprite sprite)
+        public void SetSlot(InventoryItemView item)
         {
+            inventoryItem = item;
+            occupied = true;
         }
 
         public void SetVisibility(bool visible)

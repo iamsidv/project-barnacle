@@ -527,9 +527,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1258312852150431430, guid: df785fc97978d4c848dfc4ac6342b9fb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6552826174015700583, guid: df785fc97978d4c848dfc4ac6342b9fb, type: 3}
       propertyPath: m_VertexColorAlwaysGammaSpace
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7489302172716623360, guid: df785fc97978d4c848dfc4ac6342b9fb, type: 3}
+      propertyPath: m_Sprite
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8211546529092554845, guid: df785fc97978d4c848dfc4ac6342b9fb, type: 3}
       propertyPath: m_Pivot.x

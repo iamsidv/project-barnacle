@@ -750,7 +750,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 862ee80f21684831acba1bbe50da8fe9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slotId: 0
   rectTransform: {fileID: 8816541243313008256}
+  occupied: 0
+  inventoryItem: {fileID: 0}
+  image: {fileID: 8183933232150593526}
 --- !u!1 &4539695061856843739
 GameObject:
   m_ObjectHideFlags: 0
@@ -1652,8 +1656,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c913227fdde4ed6824659d12bec8e55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bg: {fileID: 1104716377429395659}
+  slotId: 0
+  rectTransform: {fileID: 0}
+  occupied: 0
   inventoryItem: {fileID: 0}
+  bg: {fileID: 1104716377429395659}
 --- !u!1 &8008429817387173328
 GameObject:
   m_ObjectHideFlags: 0
@@ -1742,7 +1749,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 862ee80f21684831acba1bbe50da8fe9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slotId: 0
   rectTransform: {fileID: 732535109755103385}
+  occupied: 0
+  inventoryItem: {fileID: 0}
+  image: {fileID: 2974479257529416753}
 --- !u!1 &8011536680981014915
 GameObject:
   m_ObjectHideFlags: 0
@@ -2069,7 +2080,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 5298525396753898246}
-  _parentTransform: {fileID: 0}
+  currentSlot: {fileID: 0}
 --- !u!114 &7521611240966761897
 MonoBehaviour:
   m_ObjectHideFlags: 0

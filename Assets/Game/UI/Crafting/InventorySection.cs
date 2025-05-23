@@ -43,10 +43,16 @@ namespace Game.UI.Crafting
 
             foreach ((int slotId, Slot slot) in /*context.Player.Inventory.*/Slots)
             {
-                InventorySlot view = Instantiate(slotPrefab, inventoryContainer);
-                view.SetData(slotId.ToString());
+                InventorySlot existingItem = _slotItems.Find(t => t.SlotId == slotId);
+                
+                InventorySlot view = existingItem == null ? Instantiate(slotPrefab, inventoryContainer) : existingItem;
+                view.SetData(slotId);
                 view.SetVisibility(true);
-                _slotItems.Add(view);
+
+                if (existingItem == null)
+                {
+                    _slotItems.Add(view);
+                }
 
                 if (slot.Item != null)
                 {
@@ -54,6 +60,7 @@ namespace Game.UI.Crafting
                     item.SetData(context, slot.Item.Id);
                     item.SetOwner(this, view);
                     item.SetVisibility(true);
+                    view.SetSlot(item);
                 }
             }
         }
@@ -71,6 +78,16 @@ namespace Game.UI.Crafting
         public bool CheckOverlaps(InventoryItemView view, Vector2 eventDataPosition, out ItemSlot slot)
         {
             return _owner.CraftingSection.CheckOverlap(eventDataPosition, out slot);
+        }
+
+        public void ResetSlot()
+        {
+            foreach (InventorySlot item in _slotItems)
+            {
+                item.ResetSlot();
+            }
+            
+            PopulateInventory();
         }
     }
 }

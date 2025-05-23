@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Game.UI.Crafting
 {
-    public class CraftItemsSection : MonoBehaviour
+    public class CraftingSection : MonoBehaviour
     {
         [SerializeField] private CraftItemSlot item1;
         [SerializeField] private CraftItemSlot item2;
@@ -39,6 +39,12 @@ namespace Game.UI.Crafting
 
         public void Refresh()
         {
+        }
+
+        public void ResetSlot()
+        {
+            item1.ResetSlot();
+            item2.ResetSlot();
         }
     }
 }

@@ -5,13 +5,13 @@ namespace Game.UI.Crafting
 {
     public class CraftItemsView : BaseView
     {
-        [SerializeField] private CraftItemsSection craftingSection;
+        [SerializeField] private CraftingSection craftingSection;
         [SerializeField] private InventorySection inventorySection;
 
         [SerializeField] private Button btnContinue;
         [SerializeField] private Button btnClear;
 
-        public CraftItemsSection CraftingSection => craftingSection;
+        public CraftingSection CraftingSection => craftingSection;
         
         private void Start()
         {
@@ -32,6 +32,8 @@ namespace Game.UI.Crafting
 
         private void ClearCraftingOptions()
         {
+            craftingSection.ResetSlot();
+            inventorySection.ResetSlot();
         }
 
         private void CraftNewItems()

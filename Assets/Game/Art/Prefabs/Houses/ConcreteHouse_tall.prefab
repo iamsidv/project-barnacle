@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: a8a15a5b5ee36304a9cecee0cd2e7c78, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.93901
+      value: 66.47564
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a8a15a5b5ee36304a9cecee0cd2e7c78, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.76232
+      value: 53.89166
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a8a15a5b5ee36304a9cecee0cd2e7c78, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -25.03165
+      value: 102.17
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a8a15a5b5ee36304a9cecee0cd2e7c78, type: 3}
       propertyPath: m_LocalRotation.w
@@ -34,7 +34,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a8a15a5b5ee36304a9cecee0cd2e7c78, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a8a15a5b5ee36304a9cecee0cd2e7c78, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -58,15 +58,15 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a8a15a5b5ee36304a9cecee0cd2e7c78, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 408772769339209251}
+      addedObject: {fileID: 4530437681186188083}
   m_SourcePrefab: {fileID: 100100000, guid: a8a15a5b5ee36304a9cecee0cd2e7c78, type: 3}
 --- !u!1 &6385649707374567886 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a8a15a5b5ee36304a9cecee0cd2e7c78, type: 3}
   m_PrefabInstance: {fileID: 6079590401682857119}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &408772769339209251
-MeshCollider:
+--- !u!65 &4530437681186188083
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -83,7 +83,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -7581925700345393815, guid: a8a15a5b5ee36304a9cecee0cd2e7c78, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 34.291016, y: 62.589184, z: 39.569397}
+  m_Center: {x: 1.3901719, y: 31.571299, z: -0.07594682}

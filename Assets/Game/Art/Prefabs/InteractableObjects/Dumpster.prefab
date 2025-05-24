@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 3586466988294992244}
   - component: {fileID: 2011564917879748767}
   - component: {fileID: 612510187651278320}
-  - component: {fileID: 8357350812973174889}
+  - component: {fileID: 7058357606168261106}
   m_Layer: 0
   m_Name: LidRight003
   m_TagString: Untagged
@@ -196,8 +196,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8357350812973174889
-MeshCollider:
+--- !u!65 &7058357606168261106
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -214,10 +214,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -1027819670881546664, guid: 2813e0f1eb6635a4fb49bee27422259c, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 0.92326117, y: 0.26662713, z: 1.2148126}
+  m_Center: {x: 0.00015361984, y: -0.086459234, z: 0.57384795}
 --- !u!1 &2839614642119362443
 GameObject:
   m_ObjectHideFlags: 0
@@ -366,7 +365,7 @@ GameObject:
   - component: {fileID: 6741575754380728650}
   - component: {fileID: 3890780297532717026}
   - component: {fileID: 6321275620975237275}
-  - component: {fileID: 5192021095388828905}
+  - component: {fileID: 5793033645065276206}
   m_Layer: 0
   m_Name: LidRight002
   m_TagString: Untagged
@@ -442,8 +441,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5192021095388828905
-MeshCollider:
+--- !u!65 &5793033645065276206
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -460,10 +459,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -1832591355204936030, guid: 2813e0f1eb6635a4fb49bee27422259c, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 0.92326117, y: 0.26662704, z: 1.2148124}
+  m_Center: {x: -0.4604339, y: -0.08793333, z: 0.5738682}
 --- !u!1 &6217208569718064647
 GameObject:
   m_ObjectHideFlags: 0
@@ -591,7 +589,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8887b0cc0fd44b769809617e30a5eed3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  view: {fileID: 0}
+  view: {fileID: 2839614642119362443}
 --- !u!114 &5873991756347981818
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,8 +14,6 @@ namespace Game.Engine.Interaction.WorldItems
 
         [SerializeField] private VendingMachineGameView gameView;
         
-        
-        
         public override void OnInteract()
         {
             SetupCamera();

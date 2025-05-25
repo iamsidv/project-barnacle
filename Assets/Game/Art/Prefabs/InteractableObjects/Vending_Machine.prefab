@@ -262,6 +262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8887b0cc0fd44b769809617e30a5eed3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  offsetPosition: {x: 0, y: 2, z: 0}
   view: {fileID: 4723876608151321769}
 --- !u!114 &5204972655067870875
 MonoBehaviour:
@@ -315,7 +316,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3

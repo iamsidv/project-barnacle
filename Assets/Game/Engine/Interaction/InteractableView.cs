@@ -1,3 +1,4 @@
+using Game.UI.Hud;
 using UnityEngine;
 
 namespace Game.Engine.Interaction
@@ -6,6 +7,7 @@ namespace Game.Engine.Interaction
     {
         private IPlayerInteractable _interactingObject;
 
+        [SerializeField] private Vector3 offsetPosition;
         [SerializeField] private GameObject view;
 
         private bool _isActive;
@@ -37,10 +39,6 @@ namespace Game.Engine.Interaction
 
         private void Update()
         {
-            var direction = Camera.main.transform.position - transform.position;
-            direction.y = 0;
-            view.transform.rotation = Quaternion.LookRotation(-direction.normalized);
-
             if (!Interactable)
             {
                 return;
@@ -59,9 +57,14 @@ namespace Game.Engine.Interaction
             set
             {
                 _isActive = enabled = value;
-                if (view != null)
+
+                if (_isActive)
                 {
-                    view.SetActive(_isActive);
+                    HudView.Instance.AttachToTarget(transform, offsetPosition);
+                }
+                else
+                {
+                    HudView.Instance.ReleaseTarget();
                 }
             }
         }

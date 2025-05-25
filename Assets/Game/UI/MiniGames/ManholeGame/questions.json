@@ -1,0 +1,146 @@
+{
+   "title": "Sewer Scavenger's Riddle",
+  "subtitle": "A Quest for the Cleverest Rat",
+  "description": "Dive into the murky depths of the city’s underbelly, where treasures await those clever enough to solve the riddles of the Sewer Scavenger. Navigate through pipes, balance weights, and unlock secrets to claim your prize. Only the sharpest minds will emerge victorious from this dank labyrinth.",
+  "introduction": [
+    "Welcome, whiskered wanderer, to my damp domain beneath the cobblestones…\nI have treasures hidden in fetid pools and rusty corners—yours if you dare.\nAnswer my riddle, and the finest scrap you’ve ever seen will be yours.\nFail, and you’ll leave smelling like last week’s sludge. Ready, rat?\n",
+    "Well met, furry filcher of filth! I’ve scavenged prizes from every clogged drain.\nBut I only part with my spoils for those clever enough to crack a sewer’s secret.\nSolve my puzzle, and I’ll hand over a gleaming piece of undercity gold—no mold included.\nThink you’re up to the task, four-legged tinkerer?\n",
+    "Oi, scuttle-paws, fancy a bit of rare loot from the bowels of this city?\nI’ve got more shiny bits than a crow’s nest, but I don’t give ‘em away for free.\nProve your wit with my riddle—then I’ll slide you the goods through this manhole.\nFail, and you’ll be knee-deep in sewer slime till the next tide. Care to play?\n",
+    "Hello there! Let's see how smart you are. Ready for some questions?",
+    "Greetings, little rat! I have some riddles for you. Solve them to earn your reward.",
+    "Ahoy, whiskered one! I’ve got a challenge for you. Answer my riddles and claim your prize!",
+    "Welcome, furry friend! I have some tricky questions for you. Solve them to win a treasure.",
+    "Hey there, little scavenger! I’ve got some riddles for you. Answer them right and you’ll get a shiny reward.",
+    "Greetings, clever critter! I have some puzzles for you. Solve them to earn your loot."
+  ],
+  "wrongResponse": [
+    "Ha! Not quite, sewer-sleuth. The tunnels hold their secrets tight—and so shall your paws remain empty.",
+    "Wrong answer, whiskered one. The city’s secrets are not so easily given.",
+    "Nope! That’s not the answer, little rat. The sewers are full of tricks and traps.",
+    "Not even close, my scurrying friend. The treasures of the undercity are reserved for the clever.",
+    "You’ve got the nose for treasure, but not the brains for riddles. Try again!",
+    "You think you’re clever, but that answer stinks worse than the sewers themselves.",
+    "That’s not the answer, little ratling. The sewers are full of mysteries, and you’ve missed this one.",
+    "Oh, you’re off the mark! The sewers are tricky, but I know you can do better.",
+    "Wrong again, ratling. Return when your wits are sharper—until then, you’ll stink of sewer more than my wares."
+  ],
+  "correctResponse": [
+    "Well done! You’ve cracked the code. Here’s your prize!",
+    "Bravo! You’re sharper than a rat’s tooth. Take your reward!",
+    "Excellent! You’ve earned this shiny treasure.",
+    "You did it! Here’s the loot you deserve.",
+    "Impressive, scuttle-paws! You’ve cracked my puzzle. Take this gleaming shard from the depths—may it fuel your crafty ambitions.",
+    "Well played, whiskered wonder! You’ve outsmarted the sewers. Here’s your prize, a treasure fit for a clever rat.",
+    "Nicely done, little scavenger! You’ve solved my riddle. Here’s your reward, a piece of the undercity’s finest scrap.",
+    "You’ve got the brains of a true sewer scavenger! Here’s your prize, a shiny bit of loot from the depths.",
+    "You’ve proven yourself worthy, furry friend! Here’s your treasure, a reward for your cleverness."
+  ],
+  "final": [
+    "Congratulations, clever critter! You’ve earned your prize. May it serve you well in your adventures.",
+    "Well done, whiskered wonder! Take this treasure and use it wisely.",
+    "You’ve proven yourself worthy, little scavenger. Here’s your reward!",
+    "Bravo, furry friend! May this loot bring you fortune and glory."
+  ],
+  "questions": [
+    {
+      "question": "Three pipes line these tunnels: Stream A flows slower than Stream B, but Stream B is not the swiftest. Stream C outpaces Stream A. Which pipe bears the fastest current?",
+      "options": [
+        "Pipe A",
+        "Pipe B",
+        "Pipe C",
+        "All three flow at the same speed"
+      ],
+      "correctIndex": 2
+    },
+    {
+      "question": "Before you lies an ancient balance and four scrap weights: a bolt (1), a coil of wire (3), a dented can (5) and a capped wire bundle (7). Which combination exactly sums to 10 so the hatch swings open?",
+      "options": [
+        "7 + 3",
+        "5 + 5",
+        "5 + 3 + 1 + 1",
+        "3 + 3 + 3 + 1"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "question": "A heptagonal relief sits on the wall with seven shaped holes\u2014triangle, square, pentagon\u2026 up to heptagon. You hold seven fragments of matching shapes. How do you unlock the vault?",
+      "options": [
+        "Smash each fragment into place",
+        "Rotate each fragment to match its hole and insert",
+        "Press the center of the heptagon three times",
+        "Turn the entire panel until it clicks"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "question": "I hide the city in darkness, yet contain no stone nor steel. I reek, I teem, I rumble\u2014home to squeakers and your kind. What am I?",
+      "options": [
+        "A cave",
+        "A mine",
+        "A sewer",
+        "A tunnel"
+      ],
+      "correctIndex": 2
+    },
+    {
+      "question": "I have no lungs, yet I breathe through these tunnels. I have no lips, yet I speak your name back at you. What am I?",
+      "options": [
+        "The wind",
+        "An echo",
+        "A whisper",
+        "A shouting voice"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "question": "I'm born of hair, grime and time; I lurk in pipes and make them choke. You tug and pull, but still I grow. What foul thing am I?",
+      "options": [
+        "Grease",
+        "Rust",
+        "A clog",
+        "Algae"
+      ],
+      "correctIndex": 2
+    },
+    {
+      "question": "I twist and turn through walls and floors, carrying muck and secrets galore. You cannot see me, yet rely on my flow. What invisible artery am I?",
+      "options": [
+        "A water pipe",
+        "An electrical wire",
+        "A ventilation shaft",
+        "A data cable"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "question": "I scurry without feet, squeak without lips, nibble without teeth. I haunt these tunnels yet fear the light. Who am I?",
+      "options": [
+        "A rat",
+        "A bat",
+        "A ghost",
+        "A cat"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "question": "I swell in the rain and shrink in the sun; I coat your paws yet vanish when dry. I\u2019m sticky, I\u2019m slick\u2014what am I?",
+      "options": [
+        "Rust",
+        "Water",
+        "Mud",
+        "Slime"
+      ],
+      "correctIndex": 2
+    },
+    {
+      "question": "I fall from the sky but drown in the depths. I can flood these halls but leave no trace at dawn. What am I?",
+      "options": [
+        "Rain",
+        "Water",
+        "Oil",
+        "Fog"
+      ],
+      "correctIndex": 0
+    }
+  ]
+}

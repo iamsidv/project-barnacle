@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5968624394507955521
 Transform:
   m_ObjectHideFlags: 0
@@ -314,6 +314,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c52e47bf534041d686e2bad40de99049, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  manholeAnimator: {fileID: 6228712020425513774}
+  localCamera: {fileID: 5792424266298811977}
+  viewPrefab: {fileID: 8258531284105418974, guid: c0f57b1e2db7741c9a10f0a7026e990a, type: 3}
 --- !u!135 &8767832052796500415
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -348,7 +351,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6459115007724595688}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 2b1d478199f966d498cb987a5e8381fd, type: 2}
   m_CullingMode: 0

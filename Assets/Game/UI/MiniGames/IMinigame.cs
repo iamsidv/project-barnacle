@@ -1,7 +1,11 @@
+using Game.Configs;
+using Game.Engine.Interaction;
+
 namespace Game.UI.Minigames
 {
-    public class IMinigame
+    public interface IMinigame
     {
-        
+        void Setup(MiniGameConfig config);
+        void BindWorldItemToView(BaseInteractableWorldItem worldItem);
     }
 }

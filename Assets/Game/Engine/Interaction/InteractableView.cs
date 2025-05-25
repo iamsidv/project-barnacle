@@ -12,7 +12,7 @@ namespace Game.Engine.Interaction
 
         private bool _isActive;
 
-        private void Awake()
+        private void Start()
         {
             Interactable = false;
         }

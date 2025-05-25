@@ -275,6 +275,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   machineAnimator: {fileID: 4628731387870244936}
   localCamera: {fileID: 6382452123362455148}
+  miniGameConfig: {fileID: 11400000, guid: fb1ef815c19444f6bbb05eeb34a8304e, type: 2}
   viewPrefab: {fileID: 2560321334078937184, guid: 0a339ce2cbbc14fba863034b7b3ef491, type: 3}
   knobAudioSource: {fileID: 5819482394492044981}
 --- !u!95 &4628731387870244936

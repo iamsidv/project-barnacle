@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using Game.Configs;
 using Game.Engine;
 using Game.Engine.Actions;
+using Game.Engine.Interaction;
 using Game.Engine.Interaction.WorldItems;
 using Game.Profile;
+using Game.UI.Minigames;
 using Game.UI.Minigames.Manhole;
 using JetBrains.Annotations;
 using Newtonsoft.Json;
@@ -15,7 +17,7 @@ using Random = UnityEngine.Random;
 
 namespace Game.UI.MiniGames.ManholeGame
 {
-    public class ManholeMinigameView : BaseView
+    public class ManholeMinigameView : BaseView, IMinigame
     {
         private readonly float _timeToBlockTintInput = 2f;
 
@@ -133,7 +135,9 @@ namespace Game.UI.MiniGames.ManholeGame
 
             currentQuestionIndex++;
             // Invoke("ShowQuestion", 1.5f);
-
+            
+            GameEngine.Context.Player.UpdateMinigamePlayedCount(miniGameConfig.MinigameId);
+            
             if (selectedIndex == q.correctIndex)
             {
                 ClearView();
@@ -141,7 +145,8 @@ namespace Game.UI.MiniGames.ManholeGame
             }
             else
             {
-                Invoke("ShowQuestion", 1.5f);
+                ClearView();
+                //Invoke("ShowQuestion", 1.5f);
             }
         }
 
@@ -152,15 +157,21 @@ namespace Game.UI.MiniGames.ManholeGame
             public List<string> introduction;
             public List<string> wrongResponse;
             public List<string> correctResponse;
+            public List<string> laterResponse;
         }
 
-        public void BindWorldItemToView(Manhole referenceManhole)
+        public void BindWorldItemToView(BaseInteractableWorldItem referenceManhole)
         {
             if (manhole == null)
             {
-                manhole = referenceManhole;
+                manhole = (Manhole)referenceManhole;
                 _rewardGenerator = new MinigameRewardGenerator(miniGameConfig);
             }
+        }
+        
+        public void Setup(MiniGameConfig config)
+        {
+            miniGameConfig = config;
         }
 
         private void OnExit()
@@ -182,13 +193,31 @@ namespace Game.UI.MiniGames.ManholeGame
         public override void OnScreenEnter()
         {
             btnExit.onClick.AddListener(OnExit);
-
-
             tint.onClick.AddListener(OnRewardSkipClicked);
-
             btnExit.interactable = true;
 
-            StartCoroutine(PlayIntroText());
+            if (GameEngine.Context.Player.GetMinigamesPlayed(miniGameConfig) >= miniGameConfig.MaximumPlayCount)
+            {
+                StartCoroutine(PlayComebackLater());
+            }
+            else
+            {
+                StartCoroutine(PlayIntroText());
+            }
+        }
+
+        private IEnumerator PlayComebackLater()
+        {
+            questionContainer.SetActive(false);
+            optionsContainer.SetActive(false);
+
+            npcIntroText = _wrapper.laterResponse[Random.Range(0, _wrapper.laterResponse.Count)];
+            npcText.text = "";
+            foreach (char c in npcIntroText)
+            {
+                npcText.text += c;
+                yield return new WaitForSeconds(typingSpeed);
+            }
         }
 
         public override void OnScreenExit()

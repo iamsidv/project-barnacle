@@ -1,4 +1,5 @@
 using System;
+using Game.Configs;
 using Game.UI.MiniGames.VendingMachineGame;
 using UnityEngine;
 
@@ -13,8 +14,8 @@ namespace Game.Engine.Interaction.WorldItems
 
         [SerializeField] private Animator machineAnimator;
         [SerializeField] private Camera localCamera;
+        [SerializeField] private MiniGameConfig miniGameConfig;
         [SerializeField] private VendingMachineGameView viewPrefab;
-
         [SerializeField] private AudioSource knobAudioSource;
         
         private VendingMachineGameView _gameView;
@@ -34,6 +35,7 @@ namespace Game.Engine.Interaction.WorldItems
                 _gameView.gameObject.name = nameof(VendingMachineGameView);
             }
 
+            _gameView.Setup(miniGameConfig);
             _gameView.SetVisibility(true);
             _gameView.BindWorldItemToView(this);
             _gameView.OnScreenEnter();
@@ -93,8 +95,8 @@ namespace Game.Engine.Interaction.WorldItems
         private bool IsMachineBroke()
         {
             PlayerContext context = GameEngine.Context;
-            return context.Player.VendingMachinePlayedCount >=
-                   context.Config.MaxVendingMachinePlayCount;
+            return context.Player.GetMinigamesPlayed(miniGameConfig) >=
+                   miniGameConfig.MaximumPlayCount;
         }
     }
 }

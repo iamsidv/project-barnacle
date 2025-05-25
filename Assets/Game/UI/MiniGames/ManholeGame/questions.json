@@ -41,6 +41,12 @@
     "You’ve proven yourself worthy, little scavenger. Here’s your reward!",
     "Bravo, furry friend! May this loot bring you fortune and glory."
   ],
+  "laterResponse": [
+    "Come back when you’re ready to try again, little rat. The sewers are always waiting for a clever mind.",
+    "Return when you’ve sharpened your wits, scuttle-paws. The treasures of the undercity await the clever.",
+    "I'll be here, whiskered one. Come back when you’re ready to tackle my riddles again.",
+    "The sewers will always have more secrets, little ratling. Return when you’re ready to try again."
+  ],
   "questions": [
     {
       "question": "Three pipes line these tunnels: Stream A flows slower than Stream B, but Stream B is not the swiftest. Stream C outpaces Stream A. Which pipe bears the fastest current?",

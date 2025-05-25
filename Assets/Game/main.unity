@@ -1210,18 +1210,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 58299605829791432, guid: ebb4ad1a68061ba4e8f9d8a3553688ba, type: 3}
-      propertyPath: MaxDistance
-      value: 9.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 58299605829791432, guid: ebb4ad1a68061ba4e8f9d8a3553688ba, type: 3}
-      propertyPath: rolloffMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2035012242167638437, guid: ebb4ad1a68061ba4e8f9d8a3553688ba, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4523519504311017744, guid: ebb4ad1a68061ba4e8f9d8a3553688ba, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.82971
@@ -1265,10 +1253,6 @@ PrefabInstance:
     - target: {fileID: 4539503452436917910, guid: ebb4ad1a68061ba4e8f9d8a3553688ba, type: 3}
       propertyPath: m_Name
       value: Level1_DirtyAlley
-      objectReference: {fileID: 0}
-    - target: {fileID: 5292794267284928372, guid: ebb4ad1a68061ba4e8f9d8a3553688ba, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

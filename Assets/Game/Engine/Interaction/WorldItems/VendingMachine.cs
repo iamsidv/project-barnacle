@@ -15,6 +15,8 @@ namespace Game.Engine.Interaction.WorldItems
         [SerializeField] private Camera localCamera;
         [SerializeField] private VendingMachineGameView viewPrefab;
 
+        [SerializeField] private AudioSource knobAudioSource;
+        
         private VendingMachineGameView _gameView;
 
         private void Start()
@@ -44,7 +46,9 @@ namespace Game.Engine.Interaction.WorldItems
 
         public void PlayKnobRotateAnimation()
         {
+            knobAudioSource.Stop();
             machineAnimator.Play(_rotateKnobState);
+            knobAudioSource.Play();
         }
 
         public void PlayLidOpenAnimation()
@@ -58,6 +62,7 @@ namespace Game.Engine.Interaction.WorldItems
             {
                 _gameView.ActivateCollectButton(true);
             }
+            knobAudioSource.Stop();
         }
 
         public void OnLidOpenComplete()

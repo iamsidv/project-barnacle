@@ -220,6 +220,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 03c7c80b2a6cf284499670cfc4ae5d49, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5204972655067870875}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 03c7c80b2a6cf284499670cfc4ae5d49, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4628731387870244936}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 03c7c80b2a6cf284499670cfc4ae5d49, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3885950858834095777}
     - targetCorrespondingSourceObject: {fileID: -7493483729511010753, guid: 03c7c80b2a6cf284499670cfc4ae5d49, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2811332630653997170}
@@ -231,16 +237,10 @@ PrefabInstance:
       addedObject: {fileID: 8354829803907863676}
     - targetCorrespondingSourceObject: {fileID: 4512574735229681814, guid: 03c7c80b2a6cf284499670cfc4ae5d49, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8780963006551863725}
-    - targetCorrespondingSourceObject: {fileID: 4512574735229681814, guid: 03c7c80b2a6cf284499670cfc4ae5d49, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 475881105216772661}
     - targetCorrespondingSourceObject: {fileID: -3018410847761453506, guid: 03c7c80b2a6cf284499670cfc4ae5d49, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7411995265958637439}
-    - targetCorrespondingSourceObject: {fileID: 2574412428572346704, guid: 03c7c80b2a6cf284499670cfc4ae5d49, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6600555263242592167}
     - targetCorrespondingSourceObject: {fileID: 2574412428572346704, guid: 03c7c80b2a6cf284499670cfc4ae5d49, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6612644653755165113}
@@ -275,6 +275,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf31f42c64ef412f950b7c34aea2dece, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  machineAnimator: {fileID: 4628731387870244936}
+  localCamera: {fileID: 6382452123362455148}
+  gameView: {fileID: 0}
+--- !u!95 &4628731387870244936
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257003365905835975}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e16239a2dcbaf434d8ea54cc1142a6c2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!65 &3885950858834095777
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257003365905835975}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.7497973, y: 3.1366374, z: 2.3871312}
+  m_Center: {x: 0.14996123, y: 1.5184972, z: 0.3561553}
 --- !u!4 &638068173372259709 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 03c7c80b2a6cf284499670cfc4ae5d49, type: 3}
@@ -311,28 +357,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2574412428572346704, guid: 03c7c80b2a6cf284499670cfc4ae5d49, type: 3}
   m_PrefabInstance: {fileID: 1103495033831070358}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &6600555263242592167
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3236470287567377350}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bf336ab1f289b0a4b9a54898289ce32f, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!65 &6612644653755165113
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -359,28 +383,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4512574735229681814, guid: 03c7c80b2a6cf284499670cfc4ae5d49, type: 3}
   m_PrefabInstance: {fileID: 1103495033831070358}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &8780963006551863725
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3589232782031460864}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5884d2f8a4b97aa43ab79a760ad586d1, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!65 &475881105216772661
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -488,13 +490,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 638068173372259709}
     m_Modifications:
+    - target: {fileID: 636432726600611600, guid: 3254a5867a59cff45bc5462f389e95ec, type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 636432726615518832, guid: 3254a5867a59cff45bc5462f389e95ec, type: 3}
       propertyPath: m_Name
       value: VendingMachine_ItemDrop
       objectReference: {fileID: 0}
     - target: {fileID: 636432726615518832, guid: 3254a5867a59cff45bc5462f389e95ec, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 636432726615814736, guid: 3254a5867a59cff45bc5462f389e95ec, type: 3}
       propertyPath: m_LocalPosition.x

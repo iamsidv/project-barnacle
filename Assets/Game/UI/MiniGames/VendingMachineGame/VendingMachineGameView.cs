@@ -2,8 +2,10 @@ using System;
 using Game.Configs;
 using Game.Engine;
 using Game.Engine.Actions;
+using Game.Engine.Interaction;
 using Game.Engine.Interaction.WorldItems;
 using Game.Profile;
+using Game.UI.Minigames;
 using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
@@ -11,7 +13,7 @@ using UnityEngine.UI;
 
 namespace Game.UI.MiniGames.VendingMachineGame
 {
-    public class VendingMachineGameView : BaseView
+    public class VendingMachineGameView : BaseView, IMinigame
     {
         private readonly float _timeToBlockTintInput = 2f;
 
@@ -30,11 +32,16 @@ namespace Game.UI.MiniGames.VendingMachineGame
         private MinigameRewardGenerator _rewardGenerator;
         private float _tintDisplayStartTime;
 
-        public void BindWorldItemToView(VendingMachine machine)
+        public void Setup(MiniGameConfig config)
+        {
+            miniGameConfig = config;
+        }
+
+        public void BindWorldItemToView(BaseInteractableWorldItem machine)
         {
             if (vendingMachine == null)
             {
-                vendingMachine = machine;
+                vendingMachine = (VendingMachine)machine;
                 _rewardGenerator = new MinigameRewardGenerator(miniGameConfig);
             }
         }
@@ -69,7 +76,7 @@ namespace Game.UI.MiniGames.VendingMachineGame
                 vendingMachine.PlayBrokenState();
                 return;
             }
-            
+
             vendingMachine.PlayKnobRotateAnimation();
             _rewardGenerator.GetReward();
             btnRotateKnob.gameObject.SetActive(false);
@@ -90,14 +97,14 @@ namespace Game.UI.MiniGames.VendingMachineGame
         private bool CanRotateKnob()
         {
             PlayerContext context = GameEngine.Context;
-            return context.Player.VendingMachinePlayedCount <
-                   context.Config.MaxVendingMachinePlayCount;
+            return context.Player.GetMinigamesPlayed(miniGameConfig) <
+                   miniGameConfig.MaximumPlayCount;
         }
 
         public bool TryProcessRewards()
         {
             PlayerContext context = GameEngine.Context;
-            context.Player.UpdateVendingMachineUsed();
+            context.Player.UpdateMinigamePlayedCount(miniGameConfig.MinigameId);
             return true;
         }
 

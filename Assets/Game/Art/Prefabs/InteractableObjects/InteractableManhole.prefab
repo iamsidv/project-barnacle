@@ -317,6 +317,7 @@ MonoBehaviour:
   manholeAnimator: {fileID: 6228712020425513774}
   localCamera: {fileID: 5792424266298811977}
   viewPrefab: {fileID: 8258531284105418974, guid: c0f57b1e2db7741c9a10f0a7026e990a, type: 3}
+  miniGameConfig: {fileID: 11400000, guid: 2fe6de207a69148b4813cf8cd8a2ed9e, type: 2}
 --- !u!135 &8767832052796500415
 SphereCollider:
   m_ObjectHideFlags: 0

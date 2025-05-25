@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 239bcae7290749538f8042b20dc3aa97, type: 3}
   m_Name: MiniGame-VendingMachine
   m_EditorClassIdentifier: 
+  minigameId: vendingmachine
   possibleRewards:
   - itemId: wire
     probability: 50
   - itemId: jarlid
     probability: 50
+  maximumTries: 4

@@ -1,3 +1,4 @@
+using Game.Configs;
 using Game.UI.MiniGames.ManholeGame;
 using UnityEngine;
 
@@ -11,6 +12,7 @@ namespace Game.Engine.Interaction.WorldItems
         [SerializeField] private Animator manholeAnimator;
         [SerializeField] private Camera localCamera;
         [SerializeField] private ManholeMinigameView viewPrefab;
+        [SerializeField] private MiniGameConfig miniGameConfig;
         
         private ManholeMinigameView _gameView;
         
@@ -25,6 +27,7 @@ namespace Game.Engine.Interaction.WorldItems
             }
 
             manholeAnimator.Play(_openState);
+            _gameView.Setup(miniGameConfig);
             _gameView.SetVisibility(true);
             _gameView.BindWorldItemToView(this);
             _gameView.OnScreenEnter();

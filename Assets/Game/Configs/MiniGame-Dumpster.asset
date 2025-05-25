@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 239bcae7290749538f8042b20dc3aa97, type: 3}
   m_Name: MiniGame-Dumpster
   m_EditorClassIdentifier: 
+  minigameId: dumpster
   possibleRewards:
   - itemId: button
     probability: 40
@@ -19,3 +20,4 @@ MonoBehaviour:
     probability: 30
   - itemId: cap
     probability: 30
+  maximumTries: 6

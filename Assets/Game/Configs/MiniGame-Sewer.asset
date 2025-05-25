@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 239bcae7290749538f8042b20dc3aa97, type: 3}
   m_Name: MiniGame-Sewer
   m_EditorClassIdentifier: 
+  minigameId: manhole
   possibleRewards:
   - itemId: winecork
     probability: 60
   - itemId: cap
     probability: 40
+  maximumTries: 2

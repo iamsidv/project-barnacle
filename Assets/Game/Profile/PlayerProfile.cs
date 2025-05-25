@@ -9,6 +9,7 @@ namespace Game.Profile
         private UserModel _userModel;
 
         public Inventory Inventory => _userModel.Inventory;
+        public int VendingMachinePlayedCount => _userModel.VendingMachineTries;
 
         public PlayerProfile()
         {
@@ -49,6 +50,11 @@ namespace Game.Profile
         public void PrintState()
         {
             Debug.Log(JsonConvert.SerializeObject(_userModel));
+        }
+
+        public void UpdateVendingMachineUsed()
+        {
+            _userModel.VendingMachineTries += 1;
         }
     }
 
@@ -117,6 +123,7 @@ namespace Game.Profile
         [JsonProperty("name")] public string Name { get; set; }
         [JsonProperty("inventory")] public Inventory Inventory { get; set; }
         [JsonProperty("wallet")] public Wallet Wallet { get; set; }
+        [JsonProperty("vm_game")] public int VendingMachineTries { get; set; }
     }
 
     public class Wallet

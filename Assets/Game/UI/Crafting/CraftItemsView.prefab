@@ -559,6 +559,7 @@ GameObject:
   - component: {fileID: 2724760164723279962}
   - component: {fileID: 7310730341888545844}
   - component: {fileID: 3697292005810159830}
+  - component: {fileID: 3433784662914451037}
   m_Layer: 5
   m_Name: Btn-Reset
   m_TagString: Untagged
@@ -688,6 +689,19 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &3433784662914451037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2660725534892042537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1429692381c66bb47b5d72c28b9b80ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clickSound: {fileID: 8300000, guid: c8ee9d0a729a26745ad1c9417736e53e, type: 3}
 --- !u!1 &3576244892135544801
 GameObject:
   m_ObjectHideFlags: 0
@@ -1718,7 +1732,8 @@ GameObject:
   - component: {fileID: 6414015999552404913}
   - component: {fileID: 6312427262018706357}
   - component: {fileID: 3391835481349331840}
-  - component: {fileID: 7393818166817382393}
+  - component: {fileID: 1345241096116938562}
+  - component: {fileID: 1362901041827264171}
   m_Layer: 5
   m_Name: Btn-Exit
   m_TagString: Untagged
@@ -1827,7 +1842,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6414015999552404913}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7449044868715523522, guid: 0f006b5dc1058ec4ba3beb4034a13d32, type: 3}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: c8ee9d0a729a26745ad1c9417736e53e, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3391835481349331840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1848,7 +1875,7 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
---- !u!114 &7393818166817382393
+--- !u!114 &1345241096116938562
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1860,47 +1887,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1429692381c66bb47b5d72c28b9b80ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 8499616201929070000}
   clickSound: {fileID: 8300000, guid: c8ee9d0a729a26745ad1c9417736e53e, type: 3}
---- !u!1 &6650702487197503992
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2892321576405027099}
-  - component: {fileID: 8499616201929070000}
-  m_Layer: 0
-  m_Name: ButtonSound
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2892321576405027099
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6650702487197503992}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 661, y: 375, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8211546529092554845}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &8499616201929070000
+--- !u!82 &1362901041827264171
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6650702487197503992}
+  m_GameObject: {fileID: 6028259058812401426}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -2684,7 +2678,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1318036094779257497}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6520158411747529067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2958,7 +2964,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4414426701534862599}
-  - {fileID: 2892321576405027099}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game.Engine
@@ -7,5 +8,7 @@ namespace Game.Engine
         public GameObject enterCollider;
         public GameObject exitCollider;
         public GameObject ceiling;
+
+        public List<Transform> decorationPositions;
     }
 }

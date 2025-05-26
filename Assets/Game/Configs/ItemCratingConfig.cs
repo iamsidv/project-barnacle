@@ -61,6 +61,8 @@ namespace Game.Configs
         }
 
         public List<string> Collectables => collectableItem;
+        public GameObject CratedItemPrefab => prefab;
+        
         
         public bool HasCollectable(string item)
         {

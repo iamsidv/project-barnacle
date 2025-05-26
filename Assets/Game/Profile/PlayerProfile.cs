@@ -36,7 +36,7 @@ namespace Game.Profile
         private void CreateUserProfile()
         {
             int defaultSlots = 8;
-            UserModel userModel = new UserModel
+            UserModel userModel = new()
             {
                 Name = "DefaultUser",
                 Inventory = new Inventory(defaultSlots),
@@ -44,7 +44,8 @@ namespace Game.Profile
                 {
                     Coins = 100
                 },
-                MinigamesPlayed = new()
+                MinigamesPlayed = new Dictionary<string, int>(),
+                CraftedItems = new List<string>()
             };
 
             _userModel = userModel;
@@ -72,6 +73,12 @@ namespace Game.Profile
             {
                 _userModel.MinigamesPlayed.Add(id, 1);
             }
+        }
+
+        public void CraftItem(string itemName, out int length)
+        {
+            _userModel.CraftedItems.Add(itemName);
+            length = _userModel.CraftedItems.Count;
         }
     }
 
@@ -144,6 +151,7 @@ namespace Game.Profile
 
         // [JsonProperty("vm_game")] public int VendingMachineTries { get; set; }
         [JsonProperty("mini_games_played")] public Dictionary<string, int> MinigamesPlayed { get; set; }
+        [JsonProperty("items_crafted")] public List<string> CraftedItems { get; set; }
     }
 
     public class Wallet

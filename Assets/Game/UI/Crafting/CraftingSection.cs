@@ -13,6 +13,7 @@ namespace Game.UI.Crafting
         [SerializeField] private CraftItemResult result;
 
         private CraftingRuleSet _itemToCraft;
+        private CraftItemsView _craftItemsView;
 
         public bool CheckOverlap(Vector2 endPosition, out ItemSlot slot)
         {
@@ -32,6 +33,7 @@ namespace Game.UI.Crafting
 
         public void Init(CraftItemsView owner)
         {
+            _craftItemsView = owner;
             foreach (CraftItemSlot itemSlot in itemSlots)
             {
                 itemSlot.SetCallback(OnItemSlotOccupied);
@@ -101,7 +103,11 @@ namespace Game.UI.Crafting
                     }
                 }
 
+                GameEngine.Context.Player.CraftItem(_itemToCraft.ItemName, out int itemsLength);
+                
                 ResetSlots();
+
+                _craftItemsView.OnCraftingComplete(_itemToCraft, itemsLength - 1);
             }
         }
 

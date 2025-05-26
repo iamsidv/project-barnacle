@@ -66,21 +66,14 @@ namespace Game.Engine
             }
         }
 
-        private void Update()
+        public Transform GetDecorationPosition(int index)
         {
-            if (Input.GetKeyDown(KeyCode.H))
+            if (index > house.decorationPositions.Count)
             {
-                IPlayerAction action = new AddItemToInventoryAction(new InventoryItem("jarlid"));
-                ActionResult result = action.Execute(GameEngine.Context);
-                if (result == ActionResult.Success)
-                {
-                    HudView.Instance.DisplayText($"'{"jarlid"}' added to inventory");
-                }
-                else
-                {
-                    HudView.Instance.DisplayText("Inventory Full!");
-                }
+                index = house.decorationPositions.Count - 1;
             }
+
+            return house.decorationPositions[index];
         }
     }
 }

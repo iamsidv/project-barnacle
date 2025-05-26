@@ -19,8 +19,17 @@ namespace Game.Engine.Interaction.WorldItems
 
             //manholeAnimator.Play(_openState);
             //_gameView.Setup(miniGameConfig);
+            _gameView.BindWorldItemToView(this);
             _gameView.SetVisibility(true);
             _gameView.OnScreenEnter();
+        }
+
+        public void SpawnCraftedItem(GameObject prefab, int spawnIndex)
+        {
+            Debug.Log($"SpawnCraftedItem -> {prefab.name}");
+
+            Vector3 position = GameManager.Instance.GetDecorationPosition(spawnIndex).position;
+            var go = Instantiate(prefab, position, Quaternion.identity);
         }
     }
 }

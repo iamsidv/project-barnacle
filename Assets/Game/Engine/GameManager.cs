@@ -47,9 +47,9 @@ namespace Game.Engine
                 house.enterCollider.SetActive(false);
                 house.exitCollider.SetActive(true);
                 house.ceiling.SetActive(false);
-                //followCamera.ChangeCameraOrientation(true);
-                followCamera.gameObject.SetActive(false);
-                houseCamera.gameObject.SetActive(true);
+                followCamera.ChangeCameraOrientation(true);
+                // followCamera.gameObject.SetActive(false);
+                houseCamera.gameObject.SetActive(false);
             }
         }
 
@@ -60,8 +60,8 @@ namespace Game.Engine
                 house.enterCollider.SetActive(true);
                 house.exitCollider.SetActive(false);
                 house.ceiling.SetActive(true);
-                //followCamera.ChangeCameraOrientation(false);
-                followCamera.gameObject.SetActive(true);
+                followCamera.ChangeCameraOrientation(false);
+                // followCamera.gameObject.SetActive(true);
                 houseCamera.gameObject.SetActive(false);
             }
         }

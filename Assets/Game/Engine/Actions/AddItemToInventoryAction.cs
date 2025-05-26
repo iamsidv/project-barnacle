@@ -8,7 +8,7 @@ namespace Game.Engine.Actions
     public class AddItemToInventoryAction : IPlayerAction
     {
         public InventoryItem Item { get; }
-        
+
         public AddItemToInventoryAction(InventoryItem item)
         {
             Item = item;
@@ -21,7 +21,9 @@ namespace Game.Engine.Actions
                 return ActionResult.InvalidState;
             }
 
-            Slot slot = context.Player.Inventory.Slots.First(kvp => kvp.Value.IsEmpty).Value;
+            KeyValuePair<int, Slot> kvp = context.Player.Inventory.Slots.FirstOrDefault(kvp => kvp.Value.IsEmpty);
+
+            Slot slot = kvp.Value;
 
             if (slot == null)
             {
@@ -29,9 +31,9 @@ namespace Game.Engine.Actions
             }
 
             slot.AddItem(Item);
-            
+
             Debug.Log($"Adding {Item.Id} to Slot {slot.Id}");
-            
+
             return ActionResult.Success;
         }
     }

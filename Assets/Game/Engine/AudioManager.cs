@@ -9,6 +9,9 @@ namespace Game.Engine
 
         [SerializeField] private AudioSource buttonClickSource;
         [SerializeField] private AudioSource itemCollectSource;
+
+        [SerializeField] private AudioSource mainThemeSource;
+        [SerializeField] private AudioSource miniGameSource;
         
         private void Awake()
         {
@@ -23,6 +26,25 @@ namespace Game.Engine
         public void PlayItemCollectSfx()
         {
             itemCollectSource.Play();
+        }
+
+        public void PlayMinigameTheme(AudioClip clip)
+        {
+            if (clip != null)
+            {
+                mainThemeSource.Stop();
+            }
+            
+            miniGameSource.Stop();
+            miniGameSource.clip = clip;
+            miniGameSource.loop = true;
+            miniGameSource.Play();
+        }
+
+        public void StopMinigameTheme()
+        {
+            miniGameSource.Stop();
+            mainThemeSource.Play();
         }
     }
 }

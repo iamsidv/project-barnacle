@@ -181,6 +181,7 @@ GameObject:
   m_Component:
   - component: {fileID: 395546588}
   - component: {fileID: 395546589}
+  - component: {fileID: 395546590}
   m_Layer: 0
   m_Name: GameManagement
   m_TagString: Untagged
@@ -216,6 +217,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 9a7f7f9c817664b74a691ed8d207a7c6, type: 2}
+--- !u!114 &395546590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 395546587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d3f7e298bfeb48d8bc29adc4899f563, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heroControl: {fileID: 1868355606}
+  followCamera: {fileID: 238548477}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0

@@ -27,6 +27,7 @@ namespace Game.Engine.Interaction.WorldItems
 
         public override void OnInteract()
         {
+            GameManager.Instance.SetHeroVisibility(false);
             SetupCamera();
 
             if (_gameView == null)
@@ -80,6 +81,8 @@ namespace Game.Engine.Interaction.WorldItems
                 _gameView.SetVisibility(false);
                 localCamera.gameObject.SetActive(false);
             }
+            
+            GameManager.Instance.SetHeroVisibility(true);
         }
 
         public void RefreshState()

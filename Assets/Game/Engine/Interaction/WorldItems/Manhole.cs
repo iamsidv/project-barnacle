@@ -18,6 +18,7 @@ namespace Game.Engine.Interaction.WorldItems
         
         public override void OnInteract()
         {
+            GameManager.Instance.SetHeroVisibility(false);
             SetupCamera();
 
             if (_gameView == null)
@@ -47,6 +48,8 @@ namespace Game.Engine.Interaction.WorldItems
                 localCamera.gameObject.SetActive(false);
                 manholeAnimator.Play(_closeState);
             }
+            
+            GameManager.Instance.SetHeroVisibility(true);
         }
 
         public void RefreshState()

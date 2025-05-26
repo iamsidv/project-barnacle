@@ -1,36 +1,29 @@
 using System.Collections.Generic;
+using System.Linq;
 using Game.Configs;
 using Game.Engine;
 using Game.Profile;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Game.UI.Crafting
 {
     public class CraftingSection : MonoBehaviour
     {
-        [SerializeField] private CraftItemSlot itemSlot1;
-        [SerializeField] private CraftItemSlot itemSlot2;
+        [SerializeField] private CraftItemSlot[] itemSlots;
         [SerializeField] private CraftItemResult result;
 
-        private CraftItemsView _owner;
+        private CraftingRuleSet _itemToCraft;
 
         public bool CheckOverlap(Vector2 endPosition, out ItemSlot slot)
         {
-            bool a = RectTransformUtility.RectangleContainsScreenPoint(itemSlot1.RectTransform, endPosition);
-            bool b = RectTransformUtility.RectangleContainsScreenPoint(itemSlot2.RectTransform, endPosition);
-
-            //Debug.Log($"_debug_ a : {a}, b : {b}");
-            if (a && !itemSlot1.HasElement())
+            foreach (CraftItemSlot itemSlot in itemSlots)
             {
-                slot = itemSlot1;
-                return true;
-            }
-
-            if (b && !itemSlot2.HasElement())
-            {
-                slot = itemSlot2;
-                return true;
+                bool overlaps = RectTransformUtility.RectangleContainsScreenPoint(itemSlot.RectTransform, endPosition);
+                if (overlaps && !itemSlot.HasElement())
+                {
+                    slot = itemSlot;
+                    return true;
+                }
             }
 
             slot = null;
@@ -39,27 +32,40 @@ namespace Game.UI.Crafting
 
         public void Init(CraftItemsView owner)
         {
-            _owner = owner;
-            itemSlot1.SetCallback(OnItemSlotOccupied);
-            itemSlot2.SetCallback(OnItemSlotOccupied);
+            foreach (CraftItemSlot itemSlot in itemSlots)
+            {
+                itemSlot.SetCallback(OnItemSlotOccupied);
+            }
         }
 
         private void OnItemSlotOccupied()
         {
-            if (itemSlot1.HasElement() && itemSlot2.HasElement())
+            if (itemSlots.Any(slot => slot.HasElement()))
             {
-                CraftingRuleSet craftingRuleSet = GetCraftRulesetFromMaterials(itemSlot1.ItemId, itemSlot2.ItemId);
+                List<string> items = new();
+                foreach (CraftItemSlot slot in itemSlots)
+                {
+                    if (slot.HasElement())
+                    {
+                        items.Add(slot.ItemId);
+                    }
+                }
+
+                CraftingRuleSet craftingRuleSet = GetCraftRulesetFromMaterials(items);
 
                 if (craftingRuleSet != null)
                 {
                     result.PromptSuccess(craftingRuleSet.Icon, craftingRuleSet.ItemName);
+                    _itemToCraft = craftingRuleSet;
                     return;
                 }
 
+                _itemToCraft = null;
                 result.PromptFailure();
             }
             else
             {
+                _itemToCraft = null;
                 result.Refresh();
             }
         }
@@ -72,51 +78,52 @@ namespace Game.UI.Crafting
         public void ResetSlots()
         {
             result.Refresh();
-            itemSlot1.ResetSlot();
-            itemSlot2.ResetSlot();
+            foreach (CraftItemSlot itemSlot in itemSlots)
+            {
+                itemSlot.ResetSlot();
+            }
         }
 
         public void CraftItem()
         {
-            if (itemSlot1.HasElement() && itemSlot2.HasElement())
+            if (_itemToCraft != null)
             {
-                CraftingRuleSet craftingRuleSet = GetCraftRulesetFromMaterials(itemSlot1.ItemId, itemSlot2.ItemId);
-                if (craftingRuleSet != null)
+                foreach (CraftItemSlot itemSlot in itemSlots)
                 {
-                    // if (_owner.InventorySection.Slots.TryGetValue(itemSlot1.UserSlotId, out Slot slot))
-                    // {
-                    //     slot.RemoveItem();
-                    // }
-                    //
-                    // if (_owner.InventorySection.Slots.TryGetValue(itemSlot2.UserSlotId, out Slot slot2))
-                    // {
-                    //     slot2.RemoveItem();
-                    // }
-
-                    if (GameEngine.Context.Player.Inventory.Slots.TryGetValue(itemSlot1.UserSlotId, out Slot s1))
+                    if (GameEngine.Context.Player.Inventory.Slots.TryGetValue(itemSlot.UserSlotId, out Slot slot))
                     {
-                        s1.RemoveItem();
+                        slot.RemoveItem();
                     }
-
-                    if (GameEngine.Context.Player.Inventory.Slots.TryGetValue(itemSlot2.UserSlotId, out Slot s2))
-                    {
-                        s2.RemoveItem();
-                    }
-
-                    ResetSlots();
                 }
+
+                ResetSlots();
             }
         }
 
-        private CraftingRuleSet GetCraftRulesetFromMaterials(string material1, string material2)
+        private CraftingRuleSet GetCraftRulesetFromMaterials(IReadOnlyList<string> materials)
         {
             List<CraftingRuleSet> craftRules = GameEngine.Context.Config.CraftConfig.CraftingRules;
 
             foreach (CraftingRuleSet craftRule in craftRules)
             {
                 int count = craftRule.Collectables.Count;
-                if (craftRule.HasCollectable(material1) &&
-                    craftRule.HasCollectable(material2) && count == 2)
+                int totalMaterials = materials.Count;
+
+                if (totalMaterials != count)
+                {
+                    continue;
+                }
+
+                int matchingMaterials = 0;
+                foreach (var material in materials)
+                {
+                    if (craftRule.HasCollectable(material))
+                    {
+                        matchingMaterials += 1;
+                    }
+                }
+
+                if (count == matchingMaterials)
                 {
                     return craftRule;
                 }

@@ -2478,8 +2478,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbdfa048e45b43f498a61265175ca852, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemSlot1: {fileID: 5381059219806343112}
-  itemSlot2: {fileID: 3000525731604487400}
+  itemSlots:
+  - {fileID: 5381059219806343112}
+  - {fileID: 3000525731604487400}
+  - {fileID: 3381868404308453772}
   result: {fileID: 5164438631298629800}
 --- !u!1 &8054828094082105986
 GameObject:
@@ -2882,7 +2884,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.92549026, g: 0.89019614, b: 0.854902, a: 0.3882353}
+  m_Color: {r: 0.92549026, g: 0.89019614, b: 0.854902, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

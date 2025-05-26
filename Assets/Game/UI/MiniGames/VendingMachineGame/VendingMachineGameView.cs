@@ -24,6 +24,8 @@ namespace Game.UI.MiniGames.VendingMachineGame
 
         [SerializeField] private Image rewardImage;
         [SerializeField] private TMP_Text rewardName;
+        [SerializeField] private TMP_Text actionResultText;
+        [SerializeField] private TMP_Text actionResultHeading;
         [SerializeField] private Animation rewardContainer;
         [SerializeField] private MiniGameConfig miniGameConfig;
 
@@ -31,6 +33,7 @@ namespace Game.UI.MiniGames.VendingMachineGame
 
         private MinigameRewardGenerator _rewardGenerator;
         private float _tintDisplayStartTime;
+        
 
         public void Setup(MiniGameConfig config)
         {
@@ -131,9 +134,13 @@ namespace Game.UI.MiniGames.VendingMachineGame
                 if (result != ActionResult.Success)
                 {
                     Debug.Log("Inventory Already Full");
+                    actionResultText.text = "Seems like your inventory is full of stuff!";
+                    actionResultHeading.text = "Can't add item to your inventory";
                 }
                 else
                 {
+                    actionResultText.text = "Play again and test your luck!";
+                    actionResultHeading.text = "You got a new item!";
                 }
             }
 

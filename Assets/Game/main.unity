@@ -362,7 +362,7 @@ MonoBehaviour:
   heroControl: {fileID: 1868355606}
   followCamera: {fileID: 238548478}
   houseCamera: {fileID: 8745280792736513806}
-  house: {fileID: 1569668255}
+  house: {fileID: 8745280792736513807}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1184,17 +1184,6 @@ MonoBehaviour:
   itemCollectSource: {fileID: 2291510786747726906}
   mainThemeSource: {fileID: 952297777}
   miniGameSource: {fileID: 1279465252}
---- !u!114 &1569668255 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6134092407610838260, guid: b5ed3d68e2930534b9044727650340c9, type: 3}
-  m_PrefabInstance: {fileID: 8745280792736513805}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ef9943c1b06c4172a880e07fbfa7e40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1796282275
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2113,6 +2102,17 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 6537494633127376561, guid: b5ed3d68e2930534b9044727650340c9, type: 3}
   m_PrefabInstance: {fileID: 8745280792736513805}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8745280792736513807 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6541535777302749883, guid: b5ed3d68e2930534b9044727650340c9, type: 3}
+  m_PrefabInstance: {fileID: 8745280792736513805}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ef9943c1b06c4172a880e07fbfa7e40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

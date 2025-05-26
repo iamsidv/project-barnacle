@@ -234,6 +234,7 @@ MonoBehaviour:
   followCamera: {fileID: 238548478}
   collectibleObjects: []
   house: {fileID: 1569668255}
+  collectibleObjects: []
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1298,6 +1299,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1220969951743333162, guid: b5ed3d68e2930534b9044727650340c9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2880176513979437538, guid: b5ed3d68e2930534b9044727650340c9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 36.84678
@@ -1338,9 +1343,81 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2894668721568281547, guid: b5ed3d68e2930534b9044727650340c9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2894668721568281547, guid: b5ed3d68e2930534b9044727650340c9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.213
+      objectReference: {fileID: 0}
+    - target: {fileID: 3401274892063253767, guid: b5ed3d68e2930534b9044727650340c9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.299
+      objectReference: {fileID: 0}
     - target: {fileID: 3700635567934135378, guid: b5ed3d68e2930534b9044727650340c9, type: 3}
       propertyPath: m_Name
       value: Level2_House
+      objectReference: {fileID: 0}
+    - target: {fileID: 5225034813268685558, guid: b5ed3d68e2930534b9044727650340c9, type: 3}
+      propertyPath: m_Range
+      value: 0.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 5225034813268685558, guid: b5ed3d68e2930534b9044727650340c9, type: 3}
+      propertyPath: m_Intensity
+      value: 0.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 5225034813268685558, guid: b5ed3d68e2930534b9044727650340c9, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 5225034813268685558, guid: b5ed3d68e2930534b9044727650340c9, type: 3}
+      propertyPath: m_UseColorTemperature
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5736215768032191546, guid: b5ed3d68e2930534b9044727650340c9, type: 3}
+      propertyPath: m_Intensity
+      value: 0.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6354745635149142633, guid: b5ed3d68e2930534b9044727650340c9, type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6354745635149142633, guid: b5ed3d68e2930534b9044727650340c9, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6354745635149142633, guid: b5ed3d68e2930534b9044727650340c9, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6856937002250996901, guid: b5ed3d68e2930534b9044727650340c9, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.a
+      value: 0.7294118
+      objectReference: {fileID: 0}
+    - target: {fileID: 8764467123791149365, guid: b5ed3d68e2930534b9044727650340c9, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+    - target: {fileID: 8764467123791149365, guid: b5ed3d68e2930534b9044727650340c9, type: 3}
+      propertyPath: m_RenderMode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8764467123791149365, guid: b5ed3d68e2930534b9044727650340c9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a16809106044f5b41b7cbe1d711a1c98, type: 2}
+    - target: {fileID: 9132976847180395623, guid: b5ed3d68e2930534b9044727650340c9, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8765468
+      objectReference: {fileID: 0}
+    - target: {fileID: 9132976847180395623, guid: b5ed3d68e2930534b9044727650340c9, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8765468
+      objectReference: {fileID: 0}
+    - target: {fileID: 9132976847180395623, guid: b5ed3d68e2930534b9044727650340c9, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.8765468
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

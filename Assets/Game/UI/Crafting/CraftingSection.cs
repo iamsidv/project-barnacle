@@ -83,22 +83,22 @@ namespace Game.UI.Crafting
                 CraftingRuleSet craftingRuleSet = GetCraftRulesetFromMaterials(itemSlot1.ItemId, itemSlot2.ItemId);
                 if (craftingRuleSet != null)
                 {
-                    if (_owner.InventorySection.Slots.TryGetValue(itemSlot1.UserSlotId, out Slot slot))
-                    {
-                        slot.RemoveItem();
-                    }
-
-                    if (_owner.InventorySection.Slots.TryGetValue(itemSlot2.UserSlotId, out Slot slot2))
-                    {
-                        slot2.RemoveItem();
-                    }
+                    // if (_owner.InventorySection.Slots.TryGetValue(itemSlot1.UserSlotId, out Slot slot))
+                    // {
+                    //     slot.RemoveItem();
+                    // }
+                    //
+                    // if (_owner.InventorySection.Slots.TryGetValue(itemSlot2.UserSlotId, out Slot slot2))
+                    // {
+                    //     slot2.RemoveItem();
+                    // }
 
                     if (GameEngine.Context.Player.Inventory.Slots.TryGetValue(itemSlot1.UserSlotId, out Slot s1))
                     {
                         s1.RemoveItem();
                     }
 
-                    if (GameEngine.Context.Player.Inventory.Slots.TryGetValue(itemSlot1.UserSlotId, out Slot s2))
+                    if (GameEngine.Context.Player.Inventory.Slots.TryGetValue(itemSlot2.UserSlotId, out Slot s2))
                     {
                         s2.RemoveItem();
                     }

@@ -14,17 +14,17 @@ namespace Game.UI.Crafting
         private CraftItemsView _craftItemsView;
         private readonly List<InventorySlot> _slotItems = new();
 
-        public Dictionary<int, Slot> Slots = new()
-        {
-            { 1, new Slot(1).AddItem(new InventoryItem("button")) },
-            { 2, new Slot(2).AddItem(new InventoryItem("cap")) },
-            { 3, new Slot(3).AddItem(new InventoryItem("matchbox")) },
-            { 4, new Slot(4) },
-            { 5, new Slot(5) },
-            { 6, new Slot(6) },
-            { 7, new Slot(7) },
-            { 8, new Slot(8) }
-        };
+        // public Dictionary<int, Slot> Slots = new()
+        // {
+        //     { 1, new Slot(1).AddItem(new InventoryItem("button")) },
+        //     { 2, new Slot(2).AddItem(new InventoryItem("cap")) },
+        //     { 3, new Slot(3).AddItem(new InventoryItem("matchbox")) },
+        //     { 4, new Slot(4) },
+        //     { 5, new Slot(5) },
+        //     { 6, new Slot(6) },
+        //     { 7, new Slot(7) },
+        //     { 8, new Slot(8) }
+        // };
         
         public void Init(CraftItemsView owner)
         {
@@ -41,7 +41,7 @@ namespace Game.UI.Crafting
         {
             PlayerContext context = GameEngine.Context;
 
-            foreach ((int slotId, Slot slot) in /*context.Player.Inventory.*/Slots)
+            foreach ((int slotId, Slot slot) in context.Player.Inventory.Slots)
             {
                 InventorySlot existingItem = _slotItems.Find(t => t.SlotId == slotId);
                 

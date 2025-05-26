@@ -90,6 +90,11 @@ namespace Game.UI.Crafting
             {
                 foreach (CraftItemSlot itemSlot in itemSlots)
                 {
+                    if (!itemSlot.HasElement())
+                    {
+                        continue;
+                    }
+                    
                     if (GameEngine.Context.Player.Inventory.Slots.TryGetValue(itemSlot.UserSlotId, out Slot slot))
                     {
                         slot.RemoveItem();

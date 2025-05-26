@@ -91,7 +91,7 @@ namespace Game.Engine.Movement
         
         private void OnTriggerExit(Collider other)
         {
-            Debug.Log($"TriggerExit {other.gameObject.name}");
+            // Debug.Log($"TriggerExit {other.gameObject.name}");
 
             if (other.TryGetComponent(out InteractableView view))
             {
@@ -100,7 +100,7 @@ namespace Game.Engine.Movement
             
             if (other.CompareTag("HouseEnter"))
             {
-                Debug.Log("_debug_ HouseEnter TriggerExit");
+                // Debug.Log("_debug_ HouseEnter TriggerExit");
                 
                 GameManager.Instance.EnterHouse();
                 SetMovement(_indoorMovementKey);
@@ -108,7 +108,7 @@ namespace Game.Engine.Movement
             
             if (other.CompareTag("HouseExit"))
             {
-                Debug.Log("_debug_ HouseExit TriggerExit");
+                // Debug.Log("_debug_ HouseExit TriggerExit");
                 
                 GameManager.Instance.ExitHouse();
                 SetMovement(_outdoorMovementKey);

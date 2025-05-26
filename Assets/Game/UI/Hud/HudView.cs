@@ -1,5 +1,9 @@
 using System;
+using System.Collections.Generic;
+using Game.Common;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Game.UI.Hud
 {
@@ -9,6 +13,11 @@ namespace Game.UI.Hud
         [SerializeField] private Transform target;
         [SerializeField] private Vector3 offsetPosition;
 
+        [SerializeField] private TMP_Text textPrefab;
+        [SerializeField] private Transform textContainer;
+        private int maxCount = 5;
+        [SerializeField] private List<GameObject> volatileGameObjects = new();
+        
         public static HudView Instance { get; private set; }
         
         private void Awake()
@@ -47,6 +56,31 @@ namespace Game.UI.Hud
         private void SetVisibility(bool state)
         {
             rectTransform.gameObject.SetActive(state);
+        }
+
+        public void DisplayText(string message)
+        {
+            if (volatileGameObjects.Count > maxCount)
+            {
+                var text = volatileGameObjects[0];
+                volatileGameObjects.RemoveAt(0);
+                Destroy(text.gameObject);
+            }
+            else
+            {
+                TMP_Text obj = Instantiate(textPrefab, textContainer);
+                obj.gameObject.SetActive(true);
+                obj.text = message;
+                obj.TryGetComponent(out AutoDestroy autoDestroy);
+                autoDestroy.SetOnDestroy(OnObjectDestroyed);
+                volatileGameObjects.Add(obj.gameObject);
+            }
+        }
+
+        private void OnObjectDestroyed(GameObject obj)
+        {
+            int index = volatileGameObjects.FindIndex(t => t.Equals(obj));
+            volatileGameObjects.RemoveAt(index);
         }
     }
 }

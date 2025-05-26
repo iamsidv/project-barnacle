@@ -1,5 +1,6 @@
 using Game.Engine.Actions;
 using Game.Profile;
+using Game.UI.Hud;
 using UnityEngine;
 
 namespace Game.Engine.Interaction.WorldItems
@@ -22,6 +23,11 @@ namespace Game.Engine.Interaction.WorldItems
                     Destroy(go, 2f);
                 }
                 gameObject.SetActive(false);
+                HudView.Instance.DisplayText($"'{collectibleId}' added to inventory");
+            }
+            else
+            {
+                HudView.Instance.DisplayText("Inventory Full!");
             }
         }
     }

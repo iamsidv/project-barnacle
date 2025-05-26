@@ -58,7 +58,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e7ca3b239b970404bb60e591d60ae22e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 932111638657168069}
+      addedObject: {fileID: 6768249620100342721}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e7ca3b239b970404bb60e591d60ae22e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 9113693258205023546}
@@ -71,8 +71,8 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e7ca3b239b970404bb60e591d60ae22e, type: 3}
   m_PrefabInstance: {fileID: 6452731028174921803}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &932111638657168069
-BoxCollider:
+--- !u!135 &6768249620100342721
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -90,8 +90,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.43698767, y: 0.4855036, z: 0.43698767}
-  m_Center: {x: 0, y: 0.021178596, z: 0}
+  m_Radius: 1
+  m_Center: {x: -0.0000000014715144, y: 0.021176687, z: 0.0000003569732}
 --- !u!114 &9113693258205023546
 MonoBehaviour:
   m_ObjectHideFlags: 0

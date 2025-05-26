@@ -64,7 +64,7 @@ PrefabInstance:
       addedObject: {fileID: 2441610075767550514}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2029405e15787b24cb024d5c95d756ab, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7714839972334462243}
+      addedObject: {fileID: 165479343140092780}
   m_SourcePrefab: {fileID: 100100000, guid: 2029405e15787b24cb024d5c95d756ab, type: 3}
 --- !u!1 &5643337690280286802 stripped
 GameObject:
@@ -98,8 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collectibleId: jarlid
---- !u!65 &7714839972334462243
-BoxCollider:
+--- !u!135 &165479343140092780
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -117,5 +117,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.262084, y: 0.24174842, z: 2.262084}
-  m_Center: {x: 0, y: -0.020548794, z: 0}
+  m_Radius: 1.45
+  m_Center: {x: -0.0000009536399, y: -0.02054784, z: 0}

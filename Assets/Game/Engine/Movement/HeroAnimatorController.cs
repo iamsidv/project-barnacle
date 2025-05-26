@@ -10,9 +10,9 @@ namespace Game.Engine.Movement
         {
             // Debug.Log($"LogData : Dir: {moveDirection}, Velocity: {velocity}, yVelocity: {velocityY}");
 
-            var tt =  new Vector2(velocity.x, velocity.z).magnitude;
+            float tt =  new Vector2(velocity.x, velocity.z).magnitude;
             
-            Debug.Log(Mathf.FloorToInt(tt));
+            // Debug.Log(Mathf.FloorToInt(tt));
             
             animator.SetInteger("Move", Mathf.FloorToInt(tt));
             animator.SetInteger("Jump", Mathf.FloorToInt(velocity.y));

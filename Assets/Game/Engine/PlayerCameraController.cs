@@ -9,23 +9,24 @@ namespace Game.Engine
         [SerializeField] private Transform target;
 
         [SerializeField] private Vector3 offset;
+        [SerializeField] private Vector3 topCameraOffset;
         [SerializeField] private float followSpeed;
         [SerializeField] private float rotSpeed;
 
         [SerializeField] private Transform dollyCamera;
-        
+
         private float _distanceFromTarget;
         private Vector3 _normalisedDirection;
 
         [SerializeField] private float minDistance;
 
-        [SerializeField] private bool overTheTopCamera;
-        
+        [SerializeField] private bool isTopDown;
+
+
         private void Awake()
         {
-            if (overTheTopCamera)
+            if (isTopDown)
             {
-                offset = new Vector3(0, 22, 0);
                 transform.rotation = Quaternion.Euler(90, 0, 0);
             }
             else
@@ -37,6 +38,11 @@ namespace Game.Engine
 
         private void Update()
         {
+            if (isTopDown)
+            {
+                return;
+            }
+
             Vector3 toPosition = target.TransformPoint(offset);
             _normalisedDirection = (toPosition - target.position).normalized;
 
@@ -56,12 +62,23 @@ namespace Game.Engine
 
         private void LateUpdate()
         {
-            Vector3 toPosition = target.TransformPoint(offset);
+            Vector3 currentOffset = isTopDown ? topCameraOffset : offset;
+            Vector3 toPosition = target.TransformPoint(currentOffset);
             transform.position = toPosition;
 
             Vector3 targetRot = target.rotation.eulerAngles;
             float xRotation = transform.rotation.eulerAngles.x;
-            transform.rotation = Quaternion.Euler(xRotation, targetRot.y, 0);
+            transform.rotation = isTopDown ? Quaternion.Euler(90, 0, 0) : Quaternion.Euler(xRotation, targetRot.y, 0);
+        }
+
+        public void ChangeCameraOrientation(bool changeOrientation)
+        {
+            isTopDown = changeOrientation;
+
+            if (!isTopDown)
+            {
+                transform.rotation = Quaternion.Euler(28.8f, 0, 0);
+            }
         }
     }
 }

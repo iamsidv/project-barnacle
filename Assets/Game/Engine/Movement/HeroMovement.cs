@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Game.Engine.Interaction;
 using UnityEngine;
 
@@ -11,7 +12,9 @@ namespace Game.Engine.Movement
         public float turnSpeed;
         public float angle = 25f;
         public float climbSpeed = 2f;
-
+        [SerializeField] public float indoorMoveSpeed = 3f;
+        [SerializeField] public float indoorTurnSpeed = 10f;
+        
         [SerializeField] private CharacterController controller;
         [SerializeField] public float jumpHeight = 2.0f;
         [SerializeField] private float downDistance = 0.15f;
@@ -20,9 +23,25 @@ namespace Game.Engine.Movement
         private Vector3 _velocity;
         private IMovementModule _movement;
 
+        private Dictionary<string, IMovementModule> _movementFactory;
+
+        private readonly string _indoorMovementKey = "indoor";
+        private readonly string _outdoorMovementKey = "outdoor";
+        
         private void Start()
         {
-            _movement = new OutdoorTraversalMovement(this);
+            _movementFactory = new Dictionary<string, IMovementModule>()
+            {
+                { _outdoorMovementKey, new OutdoorTraversalMovement(this) },
+                { _indoorMovementKey, new IndoorMovement(this) }
+            };
+            
+            SetMovement(_outdoorMovementKey);
+        }
+
+        private void SetMovement(string id)
+        {
+            _movement = _movementFactory[id];
         }
 
         private void Update()
@@ -57,6 +76,11 @@ namespace Game.Engine.Movement
             {
                 view.ShowHint();
             }
+
+            if (other.CompareTag("HouseEnter"))// || other.CompareTag("HouseExit") )
+            {
+                Debug.Log("_debug_ HouseEnter TriggerEnter");
+            }
         }
         
         private void OnTriggerExit(Collider other)
@@ -66,6 +90,22 @@ namespace Game.Engine.Movement
             if (other.TryGetComponent(out InteractableView view))
             {
                 view.HideHint();
+            }
+            
+            if (other.CompareTag("HouseEnter"))
+            {
+                Debug.Log("_debug_ HouseEnter TriggerExit");
+                
+                GameManager.Instance.EnterHouse();
+                SetMovement(_indoorMovementKey);
+            }
+            
+            if (other.CompareTag("HouseExit"))
+            {
+                Debug.Log("_debug_ HouseExit TriggerExit");
+                
+                GameManager.Instance.ExitHouse();
+                SetMovement(_outdoorMovementKey);
             }
         }
 

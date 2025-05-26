@@ -150,11 +150,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1868355608}
   offset: {x: 0, y: 5, z: -8}
+  topCameraOffset: {x: 0, y: 17, z: 0}
   followSpeed: 180
   rotSpeed: 120
   dollyCamera: {fileID: 963194228}
   minDistance: 3
-  overTheTopCamera: 0
+  isTopDown: 0
 --- !u!4 &238548479
 Transform:
   m_ObjectHideFlags: 0
@@ -230,7 +231,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heroControl: {fileID: 1868355606}
-  followCamera: {fileID: 238548477}
+  followCamera: {fileID: 238548478}
+  collectibleObjects: []
+  house: {fileID: 1569668255}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -774,6 +777,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 993133038}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1569668255 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6134092407610838260, guid: b5ed3d68e2930534b9044727650340c9, type: 3}
+  m_PrefabInstance: {fileID: 8745280792736513805}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ef9943c1b06c4172a880e07fbfa7e40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1796282275
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -889,6 +903,8 @@ MonoBehaviour:
   turnSpeed: 3
   angle: 25
   climbSpeed: 2
+  indoorMoveSpeed: 3
+  indoorTurnSpeed: 20
   controller: {fileID: 1868355609}
   jumpHeight: 2
   downDistance: 0.15
@@ -901,7 +917,7 @@ Transform:
   m_GameObject: {fileID: 1868355606}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.9671161, z: 0, w: 0.25433534}
-  m_LocalPosition: {x: 34.279655, y: 1.1492406, z: 11.333482}
+  m_LocalPosition: {x: -14.8, y: 1.1492406, z: -0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

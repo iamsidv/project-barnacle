@@ -1,44 +1,43 @@
+using Game.Engine;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIButtonClickSound : MonoBehaviour
+namespace Game.Audio
 {
-    public AudioClip clickSound;
-    private static AudioSource sharedAudioSource;
-
-    void Start()
+    [RequireComponent(typeof(Button))]
+    public class UIButtonClickSound : MonoBehaviour
     {
-        // Ищем и сохраняем AudioSource один раз
-        if (sharedAudioSource == null)
+        [SerializeField] private Button button;
+        
+        private void OnValidate()
         {
-            GameObject soundObj = GameObject.Find("UIButtonSound");
-            if (soundObj != null)
+            if (button == null)
             {
-                sharedAudioSource = soundObj.GetComponent<AudioSource>();
+                button = GetComponent<Button>();
             }
         }
 
-        // Подписываемся на клик
-        GetComponent<Button>().onClick.AddListener(PlayClickSound);
-    }
-
-    void PlayClickSound()
-    {
-        if (sharedAudioSource == null)
+        private void Awake()
         {
-            Debug.LogWarning("AudioSource не найден!");
-            return;
+            if (button == null)
+            {
+                button = GetComponent<Button>();
+            }
         }
 
-        if (!sharedAudioSource.enabled || !sharedAudioSource.gameObject.activeInHierarchy)
+        private void OnEnable()
         {
-            Debug.LogWarning("AudioSource выключен или объект не активен");
-            return;
+            button.onClick.AddListener(PlayClickSound);
         }
 
-        if (clickSound != null)
+        private void OnDisable()
         {
-            sharedAudioSource.PlayOneShot(clickSound);
+            button.onClick.RemoveListener(PlayClickSound);
+        }
+
+        private void PlayClickSound()
+        {
+            AudioManager.Instance.PlayButtonClickSfx();
         }
     }
 }

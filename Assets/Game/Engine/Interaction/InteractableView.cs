@@ -48,6 +48,7 @@ namespace Game.Engine.Interaction
             {
                 _interactingObject?.OnInteract();
                 Interactable = false;
+                AudioManager.Instance.PlayButtonClickSfx();
             }
         }
 

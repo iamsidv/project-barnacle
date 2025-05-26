@@ -24,6 +24,7 @@ namespace Game.Engine.Interaction.WorldItems
                 }
                 gameObject.SetActive(false);
                 HudView.Instance.DisplayText($"'{collectibleId}' added to inventory");
+                AudioManager.Instance.PlayItemCollectSfx();
             }
             else
             {

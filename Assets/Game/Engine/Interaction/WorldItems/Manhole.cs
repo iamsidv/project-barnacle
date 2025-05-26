@@ -15,6 +15,8 @@ namespace Game.Engine.Interaction.WorldItems
         [SerializeField] private MiniGameConfig miniGameConfig;
         
         private ManholeMinigameView _gameView;
+
+       [SerializeField] private AudioClip clip;
         
         public override void OnInteract()
         {
@@ -32,6 +34,8 @@ namespace Game.Engine.Interaction.WorldItems
             _gameView.SetVisibility(true);
             _gameView.BindWorldItemToView(this);
             _gameView.OnScreenEnter();
+
+            AudioManager.Instance.PlayMinigameTheme(clip );
         }
         
         private void SetupCamera()
@@ -50,6 +54,7 @@ namespace Game.Engine.Interaction.WorldItems
             }
             
             GameManager.Instance.SetHeroVisibility(true);
+            AudioManager.Instance.StopMinigameTheme();
         }
 
         public void RefreshState()

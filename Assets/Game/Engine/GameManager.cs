@@ -10,10 +10,10 @@ namespace Game.Engine
 
         [SerializeField] private GameObject heroControl;
         [SerializeField] private PlayerCameraController followCamera;
-        [SerializeField] private CollectibleObject[] collectibleObjects;
+        private CollectibleObject[] _collectibleObjects;
 
         [SerializeField] private House house;
-        
+
         private void Awake()
         {
             Instance = this;
@@ -24,8 +24,8 @@ namespace Game.Engine
                 followCamera = FindAnyObjectByType<PlayerCameraController>();
             }
 
-            collectibleObjects =
-                FindObjectsByType<CollectibleObject>(FindObjectsInactive.Include, FindObjectsSortMode.InstanceID);
+            _collectibleObjects = FindObjectsByType<CollectibleObject>
+                (FindObjectsInactive.Include, FindObjectsSortMode.InstanceID);
 
             house = FindAnyObjectByType<House>();
         }

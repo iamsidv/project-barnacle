@@ -27,6 +27,8 @@ namespace Game.Engine.Movement
 
         private readonly string _indoorMovementKey = "indoor";
         private readonly string _outdoorMovementKey = "outdoor";
+
+        [SerializeField] private HeroAnimatorController animatorController;
         
         private void Start()
         {
@@ -37,6 +39,8 @@ namespace Game.Engine.Movement
             };
             
             SetMovement(_outdoorMovementKey);
+
+            animatorController = transform.GetComponentInChildren<HeroAnimatorController>();
         }
 
         private void SetMovement(string id)
@@ -66,6 +70,8 @@ namespace Game.Engine.Movement
 
             Vector3 moveDirection = _movement.GetMoveDirection();
             controller.Move(moveDirection * Time.deltaTime);
+
+            animatorController.LogData(moveDirection, controller.velocity, _velocity.y);
         }
 
         private void OnTriggerEnter(Collider other)

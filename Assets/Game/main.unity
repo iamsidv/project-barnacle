@@ -265,6 +265,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heroControl: {fileID: 1868355606}
   followCamera: {fileID: 238548478}
+  houseCamera: {fileID: 8745280792736513806}
   house: {fileID: 1569668255}
 --- !u!1 &705507993
 GameObject:
@@ -1657,6 +1658,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 712414107222239823, guid: b5ed3d68e2930534b9044727650340c9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1220969951743333162, guid: b5ed3d68e2930534b9044727650340c9, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -1790,6 +1795,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5ed3d68e2930534b9044727650340c9, type: 3}
+--- !u!20 &8745280792736513806 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 6537494633127376561, guid: b5ed3d68e2930534b9044727650340c9, type: 3}
+  m_PrefabInstance: {fileID: 8745280792736513805}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

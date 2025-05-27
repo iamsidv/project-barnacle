@@ -1292,16 +1292,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b28d069866bbf430a80ca433a8fba403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  moveSpeed: 7
   turnSpeed: 3
   angle: 25
   climbSpeed: 2
   indoorMoveSpeed: 3
   indoorTurnSpeed: 20
   controller: {fileID: 1868355609}
-  jumpHeight: 2
+  jumpHeight: 8
   downDistance: 0.15
   animatorController: {fileID: 1796282279}
+  downGravityMultiplier: 4.75
+  upGravityMultiplier: 1.95
 --- !u!4 &1868355608
 Transform:
   m_ObjectHideFlags: 0

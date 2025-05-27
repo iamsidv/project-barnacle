@@ -14,7 +14,7 @@ namespace Game.Engine.Movement
         public float climbSpeed = 2f;
         [SerializeField] public float indoorMoveSpeed = 3f;
         [SerializeField] public float indoorTurnSpeed = 10f;
-        
+
         [SerializeField] private CharacterController controller;
         [SerializeField] public float jumpHeight = 2.0f;
         [SerializeField] private float downDistance = 0.15f;
@@ -29,7 +29,9 @@ namespace Game.Engine.Movement
         private readonly string _outdoorMovementKey = "outdoor";
 
         [SerializeField] private HeroAnimatorController animatorController;
-        
+        [SerializeField] private float downGravityMultiplier = 1f;
+        [SerializeField] private float upGravityMultiplier = 1f;
+
         private void Start()
         {
             _movementFactory = new Dictionary<string, IMovementModule>()
@@ -37,7 +39,7 @@ namespace Game.Engine.Movement
                 { _outdoorMovementKey, new OutdoorTraversalMovement(this) },
                 { _indoorMovementKey, new IndoorMovement(this) }
             };
-            
+
             SetMovement(_outdoorMovementKey);
 
             animatorController = transform.GetComponentInChildren<HeroAnimatorController>();
@@ -66,7 +68,8 @@ namespace Game.Engine.Movement
             _movement.SetInputAxis(horizontalAxis, verticalAxis);
             _movement.TickMovement();
 
-            _velocity.y += _gravity * Time.deltaTime;
+            float gravityMultiplier = controller.velocity.y <= 0 ? downGravityMultiplier : upGravityMultiplier;
+            _velocity.y += _gravity * gravityMultiplier * Time.deltaTime;
 
             Vector3 moveDirection = _movement.GetMoveDirection();
             controller.Move(moveDirection * Time.deltaTime);
@@ -83,12 +86,12 @@ namespace Game.Engine.Movement
                 view.ShowHint();
             }
 
-            if (other.CompareTag("HouseEnter"))// || other.CompareTag("HouseExit") )
+            if (other.CompareTag("HouseEnter")) // || other.CompareTag("HouseExit") )
             {
                 Debug.Log("_debug_ HouseEnter TriggerEnter");
             }
         }
-        
+
         private void OnTriggerExit(Collider other)
         {
             // Debug.Log($"TriggerExit {other.gameObject.name}");
@@ -97,19 +100,19 @@ namespace Game.Engine.Movement
             {
                 view.HideHint();
             }
-            
+
             if (other.CompareTag("HouseEnter"))
             {
                 // Debug.Log("_debug_ HouseEnter TriggerExit");
-                
+
                 GameManager.Instance.EnterHouse();
                 SetMovement(_indoorMovementKey);
             }
-            
+
             if (other.CompareTag("HouseExit"))
             {
                 // Debug.Log("_debug_ HouseExit TriggerExit");
-                
+
                 GameManager.Instance.ExitHouse();
                 SetMovement(_outdoorMovementKey);
             }
